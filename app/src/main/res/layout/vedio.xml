@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        >
+
+        <ImageView
+            android:id="@+id/imgvideo1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/image3"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        android:background="@drawable/header1">
+
+        <ImageView
+            android:id="@+id/img_doc"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/document"/>
+        <ImageView
+            android:id="@+id/img_download"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toLeftOf="@+id/img_save"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/download"/>
+        <ImageView
+            android:id="@+id/img_save"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/save"/>
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        >
+
+        <ImageView
+            android:id="@+id/imgvideo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/image3"/>
+    </RelativeLayout>
+</LinearLayout>

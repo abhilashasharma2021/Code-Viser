@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".Fragment.ProfileFragment">
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:id="@+id/ivBack"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="Profile"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#E0E0E0"/>
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:background="#D6E7F1"
+    android:layout_height="180dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/rl"
+        android:layout_centerInParent="true"
+        android:layout_height="180dp">
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="130dp"
+            android:id="@+id/card"
+            android:layout_centerInParent="true"
+            android:layout_height="150dp">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="130dp"
+                android:scaleType="fitXY"
+                android:layout_height="150dp"
+                android:src="@drawable/image1" />
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="-15dp"
+        android:layout_toRightOf="@+id/rl"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/cmer" />
+</RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/user"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:fontFamily="@font/robotobold"
+            android:layout_marginLeft="10dp"
+           />
+
+    </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="10dp"
+                android:paddingStart="10dp"
+                android:id="@+id/etName"
+                android:fontFamily="@font/robotoregular"
+                android:singleLine="true"
+                android:maxLength="40"
+                android:background="@null"
+
+                android:hint="@string/enter_your_name"
+                android:paddingLeft="10dp" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/edit"/>
+        </RelativeLayout>
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/calnew"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/date_of_birth"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:fontFamily="@font/robotobold"
+            android:layout_marginLeft="10dp"
+           />
+
+    </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/rlDate"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:paddingStart="10dp"
+                android:hint="@string/dd_mm_yyyy"
+                android:id="@+id/txDob"
+                android:fontFamily="@font/robotoregular"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/edit"/>
+        </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/phonenn"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_no"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/robotobold" />
+
+    </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:paddingStart="10dp"
+                android:id="@+id/txtPhone"
+                android:singleLine="true"
+                android:maxLength="80"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/robotoregular"
+                android:background="@null"
+                android:hint="@string/phone_number"
+                android:paddingLeft="10dp" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/edit"/>
+        </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/gender"
+        android:layout_gravity="center_vertical"
+        android:textSize="15sp"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/robotobold"
+       />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:paddingStart="10dp"
+            android:id="@+id/etGender"
+            android:singleLine="true"
+            android:maxLength="80"
+            android:fontFamily="@font/robotoregular"
+            android:background="@null"
+            android:hint="@string/gender"
+            android:paddingLeft="10dp" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/edit"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/text"
+            android:layout_height="60dp"
+            android:backgroundTint="#0865A4"
+            app:cornerRadius="20dp"
+            android:fontFamily="@font/robotomedium"
+            android:id="@+id/btnNext"
+            android:layout_centerInParent="true"
+            android:text="@string/update">
+
+        </com.google.android.material.button.MaterialButton>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp" />
+
+</LinearLayout>

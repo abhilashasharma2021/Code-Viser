@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/message"
+        android:icon="@drawable/msggs"
+        android:title="Messages"/>
+
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ser"
+        android:title="Search"/>
+
+
+    <item
+        android:id="@+id/video"
+        android:icon="@drawable/vide"
+        android:title="Image/Video"/>
+
+
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/prile"
+        android:title="Profile"/>
+
+</menu>

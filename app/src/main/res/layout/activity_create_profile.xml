@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.CreateProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/back"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/create_your_profile"
+            android:layout_gravity="center_vertical"
+            android:textSize="18sp"
+            android:fontFamily="@font/robotobold"
+            android:layout_marginLeft="10dp"
+            />
+    </LinearLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/rlProfile"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:scaleType="fitXY"
+                android:id="@+id/ivProfile"
+                android:src="@drawable/pronew"/>
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/profile"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:fontFamily="@font/robotobold"
+            android:layout_marginLeft="10dp" />
+
+    </LinearLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="10dp"
+                android:paddingStart="10dp"
+                android:id="@+id/etName"
+                android:fontFamily="@font/robotoregular"
+                android:singleLine="true"
+                android:maxLength="40"
+                android:background="@null"
+                android:hint="@string/enter_your_name"
+                android:paddingLeft="10dp" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/edit"/>
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/cale"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/date_of_birth"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:fontFamily="@font/robotobold"
+            android:layout_marginLeft="10dp"
+           />
+
+    </LinearLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rlDate"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:paddingStart="10dp"
+            android:hint="@string/dd_mm_yyyy"
+            android:id="@+id/txDob"
+            android:fontFamily="@font/robotoregular"
+            android:gravity="center_vertical"
+
+            android:paddingLeft="10dp" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/edit"/>
+    </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/email"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email_address"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/robotobold" />
+
+    </LinearLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:paddingStart="10dp"
+            android:id="@+id/etEmail"
+            android:singleLine="true"
+            android:maxLength="80"
+            android:fontFamily="@font/robotoregular"
+            android:background="@null"
+            android:hint="@string/enter_your_email"
+            android:paddingLeft="10dp" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/edit"/>
+    </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/gender"
+        android:layout_gravity="center_vertical"
+        android:textSize="15sp"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/robotobold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="horizontal"
+            android:layout_marginLeft="35dp"
+            android:inputType="text"
+            android:layout_centerVertical="true"
+           >
+
+
+            <RadioButton
+                android:id="@+id/radioMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:button="@null"
+                android:fontFamily="@font/robotomedium"
+                android:paddingRight="15dp"
+                android:drawableRight="@android:drawable/btn_radio"
+                android:drawablePadding="30dp"
+                android:gravity="center_vertical"
+                android:text="@string/male"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@color/white"
+                android:button="@null"
+                android:layout_weight="1"
+                android:fontFamily="@font/robotomedium"
+                android:paddingRight="15dp"
+                android:drawableRight="@android:drawable/btn_radio"
+                android:drawablePadding="30dp"
+                android:gravity="center_vertical"
+                android:text="@string/female"
+                android:textSize="18sp" />
+
+        </RadioGroup>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:layout_marginTop="20sp"
+            android:layout_below="@+id/text"
+            android:layout_height="60dp"
+            android:backgroundTint="#0865A4"
+            app:cornerRadius="20dp"
+            android:fontFamily="@font/robotomedium"
+            android:id="@+id/btnNext"
+            android:layout_centerInParent="true"
+            android:text="@string/next">
+
+        </com.google.android.material.button.MaterialButton>
+    </RelativeLayout>
+</LinearLayout>

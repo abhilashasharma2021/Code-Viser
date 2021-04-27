@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/web"
+        android:icon="@drawable/scan"
+        android:title="@string/code_viser_web" />
+
+    <item
+        android:id="@+id/msg"
+        android:icon="@drawable/msgnn"
+        android:title="@string/starred_messages" />
+    <item
+        android:id="@+id/payment"
+        android:icon="@drawable/dollarsign"
+        android:title="@string/payment"
+        />
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/set"
+        android:title="@string/setting"
+        />
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/logoytnew"
+        android:title="@string/logout"
+        />
+</menu>

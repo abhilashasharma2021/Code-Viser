@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.DashboardActivity2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/imgsign">
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp">
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets c"
+            android:layout_centerInParent="true"
+            android:paddingStart="10dp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:id="@+id/btn_continue"
+            android:layout_marginTop="20sp"
+            android:layout_below="@+id/text"
+            android:layout_height="60dp"
+            android:backgroundTint="#0865A4"
+            app:cornerRadius="10dp"
+            android:layout_centerInParent="true"
+            android:text="CONTINUE">
+
+        </com.google.android.material.button.MaterialButton>
+    </RelativeLayout>
+</LinearLayout>
