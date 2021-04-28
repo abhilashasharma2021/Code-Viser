@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -50,6 +51,7 @@ public class MobileVerifyActivity extends AppCompatActivity implements GoogleApi
     String number = "";
     ImageView phone;
     EditText et_verify;
+    TextView txForgot;
     private GoogleApiClient mCredentialsApiClient;
     private static final int RC_HINT = 1000;
 
@@ -61,6 +63,7 @@ public class MobileVerifyActivity extends AppCompatActivity implements GoogleApi
         phone = findViewById(R.id.phone);
 
         et_verify = findViewById(R.id.et_verify);
+        txForgot = findViewById(R.id.txForgot);
 
 
         phone.setOnClickListener(v -> requestHint());
@@ -73,6 +76,13 @@ public class MobileVerifyActivity extends AppCompatActivity implements GoogleApi
                 .build();
 
 
+
+        txForgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MobileVerifyActivity.this,ForgotPasswordActivity.class));
+            }
+        });
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

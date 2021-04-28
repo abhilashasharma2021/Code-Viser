@@ -10,9 +10,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -40,6 +42,7 @@ import es.dmoral.toasty.Toasty;
 public class OtpActivity extends AppCompatActivity {
     MaterialButton btn_next;
     PinView pinView;
+    TextView txNumber,txTimer;
     String strPinView = "";
     private static final int SMS_CONSENT_REQUEST = 2;
     private final BroadcastReceiver smsVerificationReceiver = new BroadcastReceiver() {
@@ -89,9 +92,12 @@ public class OtpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_otp);
         pinView = findViewById(R.id.pinView);
         btn_next = findViewById(R.id.btn_next);
+        txNumber = findViewById(R.id.txNumber);
+        txTimer = findViewById(R.id.txTimer);
         String otp = SharedHelper.getKey(getApplicationContext(), AppConstats.OTP);
         String getMobile = SharedHelper.getKey(getApplicationContext(), AppConstats.USERMOBILE);
 
+        txNumber.setText("We send it to the number"+ getMobile);
 
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +124,24 @@ public class OtpActivity extends AppCompatActivity {
 
             }
         });
+
+
+        new CountDownTimer(60000, 1000) {
+            public void onTick(long millisUntilFinished) {
+
+                txTimer.setText("Resend Code : " + millisUntilFinished / 1000);
+
+            }
+
+            public void onFinish() {
+
+                //txTimer.setText("Done!!!!");
+
+            }
+
+        }.start();
+
+
     }
 
 

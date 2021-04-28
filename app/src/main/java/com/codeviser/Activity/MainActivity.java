@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
 
-            case R.id.home:
+            case R.id.message:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                 break;
 

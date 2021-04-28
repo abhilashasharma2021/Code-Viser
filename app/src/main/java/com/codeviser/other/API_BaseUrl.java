@@ -10,6 +10,7 @@ public class API_BaseUrl {
     public static String show_profile="update_profile";
     public static String help_to_support="help_to_support";
     public static String change_password="change_password";
+    public static String forget_password="forget_password";
 
 
 

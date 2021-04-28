@@ -3,6 +3,8 @@ package com.codeviser.Fragment;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 
@@ -23,6 +26,8 @@ import com.codeviser.Activity.SettingActivity;
 import com.codeviser.Adapter.HomeAdapter;
 import com.codeviser.Model.HomeModel;
 import com.codeviser.R;
+import com.codeviser.other.AppConstats.AppConstats;
+import com.codeviser.other.AppConstats.SharedHelper;
 
 import java.util.ArrayList;
 
@@ -62,7 +67,13 @@ public class HomeFragment extends Fragment {
 
                         if (menuItem.getItemId() == R.id.setting) {
                            startActivity(new Intent(getActivity(), SettingActivity.class));
-                        } /*else if (menuItem.getItemId() == R.id.ip_address) {
+                        }
+
+                        else if (menuItem.getItemId() == R.id.logout){
+
+                            logout();
+
+                        }/*else if (menuItem.getItemId() == R.id.ip_address) {
                             final Dialog dialog = new Dialog(MainActivity.this);
                             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                             dialog.setCancelable(true);
@@ -114,4 +125,34 @@ public class HomeFragment extends Fragment {
         }
 
     }
+
+    public void logout() {
+
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.logout_dialog);
+        Button btn_yes = dialog.findViewById(R.id.btn_yes);
+        Button btn_no = dialog.findViewById(R.id.btn_no);
+
+        btn_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedHelper.putKey(getActivity(), AppConstats.USERID, "");
+                startActivity(new Intent(getActivity(), MainActivity.class));
+                getActivity().finish();
+            }
+        });
+
+        btn_no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+    }
+
 }

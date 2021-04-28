@@ -14,6 +14,8 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.codeviser.R;
 import com.codeviser.databinding.ActivityChangePasswordBinding;
 import com.codeviser.other.API_BaseUrl;
+import com.codeviser.other.AppConstats.AppConstats;
+import com.codeviser.other.AppConstats.SharedHelper;
 import com.codeviser.other.ProgressBarCustom.CustomDialog;
 import com.google.android.gms.common.api.Api;
 
@@ -31,13 +33,21 @@ public class ChangePasswordActivity extends AppCompatActivity {
         binding= ActivityChangePasswordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+         stUserId = SharedHelper.getKey(getApplicationContext(), AppConstats.USERID);
+        stUserOldPassword = SharedHelper.getKey(getApplicationContext(), AppConstats.USERPASSWORD);
 
+         binding.ivBack.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 finish();
+             }
+         });
        binding.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              /*  strConfirm=edt_confirmPass.getText().toString().trim();
-                strNewPassword=edt_newPass.getText().toString().trim();
-                strOld=edt_oldPass.getText().toString().trim();*/
+                strConfirm=binding.etConfirmPassword.getText().toString().trim();
+                strNewPassword=binding.etNewPassword.getText().toString().trim();
+                strOld=binding.etOldPassword.getText().toString().trim();
 
                 if (!stUserOldPassword.equals(strOld)){
                     Toast.makeText(ChangePasswordActivity.this,"Please Enter Correct Old Password",Toast.LENGTH_LONG).show();
@@ -49,23 +59,24 @@ public class ChangePasswordActivity extends AppCompatActivity {
                     Toast.makeText(ChangePasswordActivity.this, "Password not match !! try again", Toast.LENGTH_SHORT).show();
                 }else {
 
-                    change_password ();
+                    change_password (strOld,strNewPassword,strConfirm);
                 }
             }
         });
     }
 
-    public void change_password(){
+    public void change_password(String strOld, String strNewPassword, String strConfirm){
         CustomDialog dialog=new CustomDialog();
         dialog.showDialog(R.layout.progress_layout,this);
 
         Log.e("dlvkdlv", stUserId );
-        Log.e("dlvkdlv", strOld );
-        Log.e("dlvkdlv", strNewPassword );
+        Log.e("dlvkdlv", this.strOld);
+        Log.e("dlvkdlv", this.strNewPassword);
         AndroidNetworking.post(API_BaseUrl.BaseUrl + API_BaseUrl.change_password)
-                .addBodyParameter("userID",stUserId)
-                .addBodyParameter("old_pass",strOld)
-                .addBodyParameter("new_pass",strNewPassword)
+                .addBodyParameter("user_id",stUserId)
+                .addBodyParameter("old_password", strOld)
+                .addBodyParameter("new_password",strNewPassword)
+                .addBodyParameter("confirm_password",strConfirm)
                 .setTag("")
                 .setPriority(Priority.HIGH)
                 .build()
@@ -75,17 +86,17 @@ public class ChangePasswordActivity extends AppCompatActivity {
                         Log.e("regrt", response.toString() );
                         dialog.hideDialog();
                         try {
-                            if (response.getString("result").equals("true")){
-                                String message=response.getString("message");
+                            if (response.getString("result").equals("Successful")){
 
-                              /*  edt_newPass.setText("");
-                                edt_confirmPass.setText("");
-                                edt_oldPass.setText("");*/
 
-                                Toasty.success(ChangePasswordActivity.this,response.getString("message"), Toast.LENGTH_SHORT).show();
+                                binding.etNewPassword.setText("");
+                                binding.etConfirmPassword.setText("");
+                                binding.etOldPassword.setText("");
+
+                                Toasty.success(ChangePasswordActivity.this,response.getString("result"), Toast.LENGTH_SHORT).show();
                             }
                             else {
-                                Toasty.error(ChangePasswordActivity.this,response.getString("message"), Toast.LENGTH_SHORT).show();
+                                Toasty.error(ChangePasswordActivity.this,response.getString("result"), Toast.LENGTH_SHORT).show();
                                 dialog.hideDialog();
                             }
                         } catch (JSONException e) {
