@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.codeviser.Activity.MobileVerifyActivity;
 import com.codeviser.Model.HomeModel;
+import com.codeviser.Model.SearchModel;
 import com.codeviser.R;
 
 import java.util.ArrayList;
@@ -20,11 +21,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
 
-    ArrayList<HomeModel>homeModelArrayList;
+    ArrayList<SearchModel>searchModelArrayList;
     Context context;
 
-    public SearchAdapter(ArrayList<HomeModel> homeModelArrayList, Context context) {
-        this.homeModelArrayList = homeModelArrayList;
+    public SearchAdapter(ArrayList<SearchModel> searchModelArrayList, Context context) {
+        this.searchModelArrayList = searchModelArrayList;
         this.context = context;
     }
 
@@ -38,9 +39,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        HomeModel homeModel=homeModelArrayList.get(position);
-        holder.txt_name.setText(homeModel.getName());
-        holder.txt_msg.setText(homeModel.getTitle());
+        SearchModel model=searchModelArrayList.get(position);
+        holder.txt_name.setText(model.getName());
+        holder.txt_msg.setText(model.getLastMsg());
         holder.relative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +52,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return homeModelArrayList.size();
+        return searchModelArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

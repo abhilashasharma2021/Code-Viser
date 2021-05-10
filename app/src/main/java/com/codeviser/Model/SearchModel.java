@@ -1,29 +1,13 @@
 package com.codeviser.Model;
 
-public class HomeModel {
+public class SearchModel {
     private String userimage;
-    private String name;
     private String path;
+    private String name;
     private String lastMsg;
-    private String Id;
-
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-        Id = id;
-    }
-
-    public String getGroupID() {
-        return groupID;
-    }
-
-    public void setGroupID(String groupID) {
-        this.groupID = groupID;
-    }
-
-    private String groupID;
+    private String lastTime;
+    private String groupId;
+    private String id;
 
     public String getUserimage() {
         return userimage;
@@ -33,20 +17,20 @@ public class HomeModel {
         this.userimage = userimage;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getPath() {
         return path;
     }
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastMsg() {
@@ -65,7 +49,19 @@ public class HomeModel {
         this.lastTime = lastTime;
     }
 
-    private String lastTime;
+    public String getGroupId() {
+        return groupId;
+    }
 
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

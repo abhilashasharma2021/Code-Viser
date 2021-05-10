@@ -8,6 +8,9 @@ public class AppConstats {
     public static final String USERPASSWORD="USERPASSWORD";
     public static final String USEREMAIL="USEREMAIL";
     public static final String USERGENDER="USERGENDER";
+    public static final String ShowVideo="ShowVideo";
+    public static final String ShowPath="ShowPath";
+    public static final String GroupId="GroupId";
 
 
 

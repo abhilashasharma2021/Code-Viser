@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment.SupportFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/blue">
+
+                <ImageView
+                    android:id="@+id/ivback"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:padding="10dp"
+
+                    android:src="@drawable/back"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/robotobold"
+                   android:layout_centerInParent="true"
+                    android:text="Help To Support"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp">
+
+                <TextView
+                    android:id="@+id/txtdetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:gravity="center"
+                    android:text="An anagram is a word or phrase formed  For example, the word anagram can be rearranged into nag a ram, also the word binary into brainy and the word adobe into abode.The precise in this practice strictly observing all the parts of the definition"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email Address"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/black"
+                    android:id="@+id/txt_email"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="15dp"
+                    />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:id="@+id/card"
+                    android:layout_below="@+id/txt_email"
+                    android:layout_margin="10dp"
+                    app:cardElevation="5dp"
+                    app:cardCornerRadius="8dp">
+                    <EditText
+                        android:id="@+id/edtemail"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:hint="Email Address"
+                        android:paddingLeft="5dp"
+                        android:background="@null"
+                        android:paddingRight="5dp"
+                        android:fontFamily="@font/robotoregular"
+                        android:layout_below="@+id/txt_email"
+                        android:maxLength="100"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textSize="14sp">
+
+
+                    </EditText>
+
+
+                </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="* Your Register Email only"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/robotoregular"
+                    android:textColor="@color/blue"
+                    android:layout_below="@+id/card"
+                    android:textSize="12dp"
+                    android:layout_marginLeft="15dp"
+                    />
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp">
+
+                <TextView
+                    android:id="@+id/txt_query"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+
+                    android:gravity="center"
+                    android:text="Query ?"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/robotobold"/>
+
+
+            </RelativeLayout>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@+id/txt_query"
+                android:layout_margin="10dp"
+                app:cardElevation="5dp"
+                app:cardCornerRadius="8dp">
+
+                <EditText
+                    android:id="@+id/etQuery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@null"
+                    android:maxLength="150"
+                    android:hint="Max words 150"
+                    android:maxLines="7"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnsubmit"
+                    android:layout_width="180dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/blue"
+                    android:elevation="6dp"
+                    android:text="Submit"
+                    app:cornerRadius="8dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

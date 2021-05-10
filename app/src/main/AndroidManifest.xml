@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeViser">
+        <activity android:name=".Activity.VideoPlayerActivity"></activity>
         <activity android:name=".Activity.ChangePasswordActivity"></activity>
         <activity android:name=".Activity.HelpActivity" />
         <activity android:name=".Activity.OtpActivity" />
@@ -21,9 +22,10 @@
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.SettingActivity" />
         <activity android:name=".Activity.PaymentActivity" />
-        <activity android:name=".Activity.AboutActivity" />
         <activity android:name=".Activity.ForgotPasswordActivity" />
-        <activity android:name=".Activity.ChatActivity" />
+        <activity android:name=".Activity.ChatActivity" >
+
+        </activity>
         <activity android:name=".Activity.CreateProfileActivity" />
         <activity android:name=".Activity.PasswordActivity" />
         <activity android:name=".Activity.MobileVerifyActivity" />
@@ -35,8 +37,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.MainActivity"></activity>
     </application>
 
 </manifest>

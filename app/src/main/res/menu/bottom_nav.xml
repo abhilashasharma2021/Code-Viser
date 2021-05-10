@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/message"
         android:icon="@drawable/msggs"
+        app:showAsAction="ifRoom" android:enabled="true"
+
         android:title="Messages"/>
 
 
     <item
         android:id="@+id/search"
-        android:icon="@drawable/ser"
-        android:title="Search"/>
-
+        android:icon="@drawable/join"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:title="Join"/>
+    <item
+        android:enabled="true"
+        android:title="Feed"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/video"
-        android:icon="@drawable/vide"
-        android:title="Image/Video"/>
+        android:icon="@drawable/support"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:title="Support"/>
 
 
 
     <item
         android:id="@+id/profile"
         android:icon="@drawable/prile"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
         android:title="Profile"/>
 
 </menu>

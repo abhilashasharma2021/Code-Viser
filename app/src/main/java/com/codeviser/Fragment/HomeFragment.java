@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,14 +21,24 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.codeviser.Activity.HelpActivity;
 import com.codeviser.Activity.MainActivity;
 import com.codeviser.Activity.SettingActivity;
 import com.codeviser.Adapter.HomeAdapter;
 import com.codeviser.Model.HomeModel;
 import com.codeviser.R;
+import com.codeviser.other.API_BaseUrl;
 import com.codeviser.other.AppConstats.AppConstats;
 import com.codeviser.other.AppConstats.SharedHelper;
+import com.codeviser.other.ProgressBarCustom.CustomDialog;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -51,8 +62,7 @@ public class HomeFragment extends Fragment {
         recycleview_message = view.findViewById(R.id.recycleview_message);
 
         recycleview_message.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        homeAdapter = new HomeAdapter(messageHomeModelArrayList, getActivity());
-        recycleview_message.setAdapter(homeAdapter);
+
 
         iv_settings=view.findViewById(R.id.iv_settings);
         iv_settings.setOnClickListener(new View.OnClickListener() {
@@ -118,12 +128,56 @@ public class HomeFragment extends Fragment {
     }
 
     public void home() {
+      String stUserId = SharedHelper.getKey(getActivity(), AppConstats.USERID);
+        CustomDialog dialog = new CustomDialog();
+        dialog.showDialog(R.layout.progress_layout, getActivity());
 
-        HomeModel homeModel= new HomeModel(R.drawable.circleimg,"Sonam","Hi");
-        for (int i = 0; i < 5; i++) {
-            messageHomeModelArrayList.add(homeModel);
-        }
+        AndroidNetworking.post(API_BaseUrl.BaseUrl + API_BaseUrl.show_group)
+                .addBodyParameter("user_id","308")
+                .setTag("Show Video and Image")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        dialog.hideDialog();
+                        messageHomeModelArrayList=new ArrayList<>();
+                        Log.e("HomeFragment", "onResponse: " +response);
 
+                        try {
+                            if (response.getString("result").equals("true")) {
+                                JSONArray jsonArray = new JSONArray(response.getString("data"));
+                                if (!response.getString("data").isEmpty()) {
+                                    for (int i = 0; i <jsonArray.length() ; i++) {
+                                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                                        HomeModel model=new HomeModel();
+                                        model.setGroupID(jsonObject.getString("group_id"));
+                                        model.setId(jsonObject.getString("id"));
+                                        model.setName(jsonObject.getString("group_name"));
+                                        model.setUserimage(jsonObject.getString("image"));
+                                        model.setPath(jsonObject.getString("path"));
+                                        model.setLastTime(jsonObject.getString("time"));
+                                        model.setLastMsg(jsonObject.getString("last_maz"));
+                                        messageHomeModelArrayList.add(model);
+                                    }
+                                    homeAdapter = new HomeAdapter(messageHomeModelArrayList, getActivity());
+                                    recycleview_message.setAdapter(homeAdapter);
+                                }
+                            }
+                        } catch (JSONException e) {
+                            dialog.hideDialog();
+                            Log.e("HomeFragment", "e: " +e);
+                        }
+                    }
+
+
+                    @Override
+                    public void onError(ANError anError) {
+                        dialog.hideDialog();
+                        Log.e("HomeFragment", "onError: " +anError);
+                    }
+                });
     }
 
     public void logout() {

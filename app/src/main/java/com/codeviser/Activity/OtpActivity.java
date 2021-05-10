@@ -135,13 +135,18 @@ public class OtpActivity extends AppCompatActivity {
 
             public void onFinish() {
 
-                //txTimer.setText("Done!!!!");
+                txTimer.setText("Resend");
 
             }
 
         }.start();
 
-
+        txTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resendOtp();
+            }
+        });
     }
 
 
@@ -251,6 +256,67 @@ public class OtpActivity extends AppCompatActivity {
 
     }
 
+    private void resendOtp(){
+        String getMobile = SharedHelper.getKey(getApplicationContext(), AppConstats.USERMOBILE);
+        CustomDialog dialog = new CustomDialog();
+        dialog.showDialog(R.layout.progress_layout, this);
+        AndroidNetworking.post(API_BaseUrl.BaseUrl + API_BaseUrl.resend_otp)
+                .addBodyParameter("mobile", getMobile)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("OtpActivity", "onResponse: " +response);
+                        dialog.hideDialog();
+                        try {
+                            if (response.getString("result").equals("true")){
+
+                                Toasty.success(OtpActivity.this,response.getString("message"),Toasty.LENGTH_SHORT).show();
+
+                                new CountDownTimer(60000, 1000) {
+                                    public void onTick(long millisUntilFinished) {
+
+                                        txTimer.setText("Resend Code : " + millisUntilFinished / 1000);
+
+                                    }
+
+                                    public void onFinish() {
+
+                                        txTimer.setText("Resend");
+
+                                    }
+
+                                }.start();
+
+                                txTimer.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        resendOtp();
+                                    }
+                                });
+
+                            }
+                            else {
+                                Toasty.error(OtpActivity.this,response.getString("message"),Toasty.LENGTH_SHORT).show();
+                                dialog.hideDialog();
+                            }
+                        } catch (JSONException e) {
+                            Log.e("OtpActivity", "e: " +e);
+                            dialog.hideDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Log.e("OtpActivity", "anError: " +anError);
+                        dialog.hideDialog();
+                    }
+                });
+
+
+
+    }
 }
 
 

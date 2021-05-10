@@ -8,8 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_margin="10dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp">
+        app:cardCornerRadius="12dp"
+        app:cardElevation="10dp">
 
         <RelativeLayout
             android:id="@+id/relative"
@@ -31,6 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/robotobold"
                 android:layout_toRightOf="@+id/profile_image"
                 android:text="Amit Pal"
                 android:textSize="15sp" />
@@ -40,11 +41,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txt_name"
+                android:fontFamily="@font/robotoregular"
                 android:layout_toRightOf="@+id/profile_image"
                 android:text="Hi"
                 android:textSize="15sp" />
-
-
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="5.54Pm"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:textSize="15sp" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

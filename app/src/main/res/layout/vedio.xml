@@ -1,32 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="100dp"
+        android:id="@+id/ivUser"
+        android:padding="5dp"
+        android:src="@drawable/profileimg"
+        android:layout_height="80dp">
+
+
+    </de.hdodenhof.circleimageview.CircleImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:id="@+id/txUserName"
+        android:layout_toRightOf="@+id/ivUser"
+        android:fontFamily="@font/robotobold"
+        android:text="Name"
+        android:textSize="15sp"/>
+</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txTitle"
+        android:layout_marginLeft="25dp"
+        android:fontFamily="@font/robotobold"
+        android:text="-"
+        android:textColor="@color/blue"
+        android:textSize="15sp"/>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:id="@+id/rlmain"
+    android:layout_height="wrap_content">
+
+
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="300dp"
+    app:cardCornerRadius="12dp"
+    android:layout_gravity="center"
+    android:layout_margin="5dp"
+    android:layout_height="wrap_content">
+
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="180dp"
+
+
+        android:id="@+id/rlSelect"
         >
 
         <ImageView
-            android:id="@+id/imgvideo1"
+            android:id="@+id/image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="180dp"
             android:scaleType="fitXY"
-            android:src="@drawable/image3"/>
+            android:src="@drawable/demo" />
+
+        <ImageView
+            android:id="@+id/playBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:src="@drawable/button" />
     </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-
+        android:layout_height="60dp"
         android:background="@drawable/header1">
 
         <ImageView
             android:id="@+id/img_doc"
             android:layout_width="25dp"
             android:layout_height="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
 
@@ -55,16 +116,15 @@
 
 
     </RelativeLayout>
-    <RelativeLayout
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        >
-
-        <ImageView
-            android:id="@+id/imgvideo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/image3"/>
-    </RelativeLayout>
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_below="@+id/txtName"
+        android:src="@drawable/demo"/>
 </LinearLayout>

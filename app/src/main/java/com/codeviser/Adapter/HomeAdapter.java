@@ -9,9 +9,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.codeviser.Activity.ChatActivity;
 import com.codeviser.Activity.MobileVerifyActivity;
 import com.codeviser.Model.HomeModel;
 import com.codeviser.R;
+import com.codeviser.other.AppConstats.AppConstats;
+import com.codeviser.other.AppConstats.SharedHelper;
 
 import java.util.ArrayList;
 
@@ -41,15 +45,26 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         HomeModel homeModel=messageHomeModelArrayList.get(position);
 
-        holder.profile_image.setImageResource(R.drawable.circleimg);
-        holder.txt_name.setText(homeModel.getName());
-        holder.txt_msg.setText(homeModel.getTitle());
-        holder.relative.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
+        if (!homeModel.equals("")){
+            try {
+                Glide.with(context).load(homeModel.getPath()+homeModel.getUserimage()).into(holder.profile_image);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
+
+            holder.txt_name.setText(homeModel.getName());
+            holder.txt_msg.setText(homeModel.getLastMsg());
+            holder.txtTime.setText(homeModel.getLastTime());
+            holder.relative.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SharedHelper.putKey(context, AppConstats.GroupId, homeModel.getGroupID());
+               context.startActivity(new Intent(context, ChatActivity.class));
+                }
+            });
+        }
+
     }
 
     @Override
@@ -59,7 +74,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView profile_image;
-        TextView txt_name,txt_msg;
+        TextView txt_name,txt_msg,txtTime;
         RelativeLayout relative;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +82,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             txt_name=itemView.findViewById(R.id.txt_name);
             txt_msg=itemView.findViewById(R.id.txt_msg);
             relative=itemView.findViewById(R.id.relative);
+            txtTime=itemView.findViewById(R.id.txtTime);
 
         }
     }

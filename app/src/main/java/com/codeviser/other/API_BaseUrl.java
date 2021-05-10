@@ -11,6 +11,11 @@ public class API_BaseUrl {
     public static String help_to_support="help_to_support";
     public static String change_password="change_password";
     public static String forget_password="forget_password";
+    public static String resend_otp="resend_otp";
+    public static String showImageVideo="content";
+    public static String show_group="show_group";
+    public static String show_groups_chat="show_groups_chat";
+    public static String search_message="search_message";
 
 
 

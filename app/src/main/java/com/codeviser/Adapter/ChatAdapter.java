@@ -6,15 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.codeviser.Activity.AboutActivity;
-import com.codeviser.Activity.MobileVerifyActivity;
+import com.bumptech.glide.Glide;
+import com.codeviser.Activity.VideoPlayerActivity;
 import com.codeviser.Model.ChatModel;
-import com.codeviser.Model.VedioModel;
 import com.codeviser.R;
+import com.codeviser.other.AppConstats.AppConstats;
+import com.codeviser.other.AppConstats.SharedHelper;
 
 import java.util.ArrayList;
 
@@ -41,14 +41,58 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ChatModel chatModel=chatModelArrayList.get(position);
-        holder.image.setImageResource(R.drawable.circleimg);
-        holder.txt_name.setText(chatModel.getTitle());
-      holder.relative.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              context.startActivity(new Intent(context, AboutActivity.class));
-          }
-      });
+
+        if (!chatModel.equals("")){
+
+            String mediaType=chatModel.getType();
+            /*image_video_type=0 means video image_video_type=1 means image */
+
+            //holder.txt_name.setText(chatModel.getUserName());
+
+            if (mediaType.equals("1")){
+
+                try {
+                    Glide.with(context).load(chatModel.getPath()+chatModel.getFile()).into(holder.image);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                holder.playBtn.setVisibility(View.VISIBLE);
+
+              /*  RequestOptions requestOptions = new RequestOptions();
+                Glide.with(context)
+                        .load("video_url")
+                        .apply(requestOptions)
+                        .thumbnail(Glide.with(context).load(vedioModel.getPath() + vedioModel.getFile()))
+                        .into(holder.image);*/
+
+
+              /*  try {
+
+                    Log.e("VedioAdapter", "onBindViewHolder: " +vedioModel.getPath() + vedioModel.getFile());
+                    Bitmap thumbnail = ThumbnailUtils.createVideoThumbnail(vedioModel.getPath() + vedioModel.getFile(), MediaStore.Video.Thumbnails.FULL_SCREEN_KIND);
+                    holder.image.setImageBitmap(thumbnail);
+
+                } catch (Throwable e) {
+                    e.printStackTrace();
+                }*/
+
+                holder.rlNew.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        holder.rlNew.setBackgroundColor(context.getResources().getColor(R.color.viewgrey));
+                        SharedHelper.putKey(context, AppConstats.ShowVideo, chatModel.getPath());
+                        SharedHelper.putKey(context, AppConstats.ShowPath, chatModel.getFile());
+                        context.startActivity(new Intent(context, VideoPlayerActivity.class));
+                    }
+                });
+
+            }
+        }
+
+
+
     }
 
     @Override
@@ -57,14 +101,16 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView image;
+        ImageView image,playBtn;
         TextView txt_name;
-        RelativeLayout relative;
+        RelativeLayout relative,rlNew;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image=itemView.findViewById(R.id.image);
             txt_name=itemView.findViewById(R.id.txt_name);
             relative=itemView.findViewById(R.id.relative);
+            playBtn=itemView.findViewById(R.id.playBtn);
+            rlNew=itemView.findViewById(R.id.rlNew);
         }
     }
 }
