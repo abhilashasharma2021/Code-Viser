@@ -14,23 +14,74 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeViser">
-        <activity android:name=".Activity.VideoPlayerActivity"></activity>
-        <activity android:name=".Activity.ChangePasswordActivity"></activity>
-        <activity android:name=".Activity.HelpActivity" />
-        <activity android:name=".Activity.OtpActivity" />
-        <activity android:name=".Activity.SignActivity" />
-        <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.SettingActivity" />
-        <activity android:name=".Activity.PaymentActivity" />
-        <activity android:name=".Activity.ForgotPasswordActivity" />
+        <activity android:name=".Activity.VideoPlayerActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
+        <activity android:name=".Activity.ChangePasswordActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
+        <activity android:name=".Activity.HelpActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
+        <activity android:name=".Activity.OtpActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
+        <activity android:name=".Activity.LoginActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
+        <activity android:name=".Activity.SettingActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
+        <activity android:name=".Activity.PaymentActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
+        <activity android:name=".Activity.ForgotPasswordActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
         <activity android:name=".Activity.ChatActivity" >
 
         </activity>
-        <activity android:name=".Activity.CreateProfileActivity" />
-        <activity android:name=".Activity.PasswordActivity" />
-        <activity android:name=".Activity.MobileVerifyActivity" />
-        <activity android:name=".Activity.DashboardActivity2" />
-        <activity android:name=".Activity.WelcomeActivity" />
+        <activity android:name=".Activity.CreateProfileActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
+        <activity android:name=".Activity.PasswordActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
+        <activity android:name=".Activity.MobileVerifyActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
+        <activity android:name=".Activity.DashboardActivity2"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
+        <activity android:name=".Activity.WelcomeActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
         <activity android:name=".Activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,7 +90,11 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".Activity.MainActivity"></activity>
+        <activity android:name=".Activity.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+
+        </activity>
     </application>
 
 </manifest>

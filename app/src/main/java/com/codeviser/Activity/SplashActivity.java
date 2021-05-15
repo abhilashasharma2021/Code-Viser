@@ -6,25 +6,42 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.widget.ImageView;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.bumptech.glide.Glide;
 import com.codeviser.R;
+import com.codeviser.other.API_BaseUrl;
 import com.codeviser.other.AppConstats.AppConstats;
 import com.codeviser.other.AppConstats.SharedHelper;
+import com.codeviser.other.ProgressBarCustom.CustomDialog;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 public class SplashActivity extends AppCompatActivity {
     String userId = "";
+    ImageView ivSplash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        ivSplash=findViewById(R.id.ivSplash);
+
+        showSplash();
        /* new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -76,5 +93,44 @@ public class SplashActivity extends AppCompatActivity {
             public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {/* ... */}
         }).check();
 
+    }
+
+
+
+    private void showSplash(){
+
+       /* CustomDialog dialog = new CustomDialog();
+        dialog.showDialog(R.layout.progress_layout, this);*/
+        AndroidNetworking.post(API_BaseUrl.BaseUrl + API_BaseUrl.show_slash_screen)
+                .setPriority(Priority.HIGH)
+                .setTag("test")
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                       // dialog.hideDialog();
+
+                        try {
+                            if (response.getString("result").equals("true")){
+                                String data=response.getString("data");
+                             JSONObject jsonObject=new JSONObject(data);
+
+                                Log.e("SplashActivity", "onResponse: " +response.getString("path")+jsonObject.getString("image"));
+                                try {
+                                    Glide.with(SplashActivity.this).load(response.getString("path")+jsonObject.getString("image")).into(ivSplash);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        } catch (JSONException e) {
+                           // dialog.hideDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                       // dialog.hideDialog();
+                    }
+                });
     }
 }

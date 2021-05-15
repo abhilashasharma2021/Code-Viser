@@ -87,6 +87,7 @@
         android:layout_marginTop="25dp"
         android:id="@+id/txForgot"
         android:text="Forgot Password"
+        android:visibility="gone"
         android:textColor="@color/blue"
         android:fontFamily="@font/robotomedium"
         android:textSize="15dp"
