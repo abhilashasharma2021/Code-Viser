@@ -95,6 +95,10 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
 
         </activity>
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_mlVclXpQjjSlfm" />
     </application>
 
 </manifest>

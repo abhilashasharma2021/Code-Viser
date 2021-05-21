@@ -28,6 +28,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.codeviser.Activity.HelpActivity;
 import com.codeviser.Activity.MainActivity;
 import com.codeviser.Activity.SettingActivity;
+import com.codeviser.Activity.SplashActivity;
 import com.codeviser.Adapter.HomeAdapter;
 import com.codeviser.Model.HomeModel;
 import com.codeviser.R;
@@ -191,7 +192,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 SharedHelper.putKey(getActivity(), AppConstats.USERID, "");
-                startActivity(new Intent(getActivity(), MainActivity.class));
+                startActivity(new Intent(getActivity(), SplashActivity.class));
                 getActivity().finish();
             }
         });

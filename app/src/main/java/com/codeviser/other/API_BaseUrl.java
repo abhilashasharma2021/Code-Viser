@@ -18,6 +18,8 @@ public class API_BaseUrl {
     public static String show_groups_chat="show_groups_chat";
     public static String search_message="search_message";
     public static String show_subscription="show_subscription";
+    public static String subscribe_now="subscribe_now";
+    public static String login="login";
 
 
 

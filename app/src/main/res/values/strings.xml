@@ -39,4 +39,7 @@
     <string name="change_password">Change Password</string>
     <string name="help">Help</string>
     <string name="notification">Notification</string>
+    <string name="already_ac">Already Registed ? <b><font color='#0865A4'>Login Now</font></b></string>
+    <string name="new_user">New User ? <b><font color='#0865A4'>Register here</font></b></string>
+    <string name="forgot_pass">Forgot Password ?<b><font color='#0865A4'> Click here</font></b></string>
 </resources>

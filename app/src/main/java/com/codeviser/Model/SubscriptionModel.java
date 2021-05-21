@@ -7,6 +7,15 @@ public class SubscriptionModel {
     private String subscriptionDescription;
     private  String subscriptionImage;
     private  String subscriptionID;
+    private  String subscriptionStatus;
+
+    public String getSubscriptionStatus() {
+        return subscriptionStatus;
+    }
+
+    public void setSubscriptionStatus(String subscriptionStatus) {
+        this.subscriptionStatus = subscriptionStatus;
+    }
 
     public String getSubscriptionTitle() {
         return subscriptionTitle;

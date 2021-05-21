@@ -109,6 +109,7 @@ public class SplashActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                        // dialog.hideDialog();
+                        Log.e("SplashActivity", "onResponse: " +response);
 
                         try {
                             if (response.getString("result").equals("true")){

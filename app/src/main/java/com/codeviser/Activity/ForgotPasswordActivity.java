@@ -35,6 +35,8 @@ String str_email="";
         binding= ActivityForgotPasswordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+
         binding.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +90,7 @@ String str_email="";
                         dialog.hideDialog();
                         try {
                             if (response.getString("result").equals("An email has been sent to you")){
-                                Toasty.success(ForgotPasswordActivity.this, response.getString("result"), Toast.LENGTH_SHORT).show();
+                                Toasty.success(ForgotPasswordActivity.this, response.getString("result"), Toast.LENGTH_LONG).show();
                                 // startActivity(new Intent(ChangePasswordActivity.this,ChangePasswordActivity.class));
 
                                 binding.etEmail.setText("");

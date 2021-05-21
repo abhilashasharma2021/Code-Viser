@@ -11,6 +11,8 @@ public class AppConstats {
     public static final String ShowVideo="ShowVideo";
     public static final String ShowPath="ShowPath";
     public static final String GroupId="GroupId";
+    public static final String USERIMAGE="USERIMAGE";
+    public static final String USERDOB="USERDOB";
 
 
 

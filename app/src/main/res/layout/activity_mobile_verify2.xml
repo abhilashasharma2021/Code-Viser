@@ -55,7 +55,8 @@
                 android:layout_height="20sp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20sp"
-                android:src="@drawable/call" />
+                android:src="@drawable/call"
+                app:tint="@color/purple_200" />
 
 
             <EditText
@@ -78,20 +79,6 @@
     </com.google.android.material.card.MaterialCardView>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_gravity="right"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="25dp"
-        android:id="@+id/txForgot"
-        android:text="Forgot Password"
-        android:visibility="gone"
-        android:textColor="@color/blue"
-        android:fontFamily="@font/robotomedium"
-        android:textSize="15dp"
-        android:textStyle="bold" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -109,8 +96,29 @@
             app:cornerRadius="10dp"
             android:layout_centerInParent="true"
             android:text="@string/next"
-            android:id="@+id/btn_next">
+            android:id="@+id/btnNext">
         </com.google.android.material.button.MaterialButton>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/rlLogin"
+            android:layout_below="@+id/btnNext"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txtAlready"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/already_ac"
+                android:fontFamily="@font/robotobold"
+                android:textSize="13sp" />
+
+
+
+        </RelativeLayout>
     </RelativeLayout>
 
 

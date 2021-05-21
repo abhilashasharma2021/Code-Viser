@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -113,7 +113,7 @@
             android:textSize="13sp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/sign_btn1"
+            android:id="@+id/btnBuy"
             android:layout_width="150dp"
             android:layout_height="45dp"
             android:layout_below="@+id/txtDescription"
@@ -123,8 +123,30 @@
             android:backgroundTint="@color/transprent"
             android:text="Buy Now"
             android:textStyle="bold"
+            android:visibility="visible"
+            android:textAllCaps="false"
             app:cornerRadius="20dp">
 
         </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAlready"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_below="@+id/txtDescription"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/transprent"
+            android:text="Already Subscribed"
+            android:textStyle="bold"
+            app:cornerRadius="20dp">
+
+        </com.google.android.material.button.MaterialButton>
+
+
     </RelativeLayout>
 </RelativeLayout>

@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,24 +47,25 @@ import static com.codeviser.other.API_BaseUrl.BaseUrl;
 
 public class MobileVerifyActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    MaterialButton btn_next;
+    MaterialButton btnNext;
     String mobile = "";
     String number = "";
     ImageView phone;
     EditText et_verify;
-    TextView txForgot;
     private GoogleApiClient mCredentialsApiClient;
     private static final int RC_HINT = 1000;
+    RelativeLayout rlLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mobile_verify2);
-        btn_next = findViewById(R.id.btn_next);
+        btnNext = findViewById(R.id.btnNext);
         phone = findViewById(R.id.phone);
 
         et_verify = findViewById(R.id.et_verify);
-        txForgot = findViewById(R.id.txForgot);
+
+        rlLogin = findViewById(R.id.rlLogin);
 
 
         phone.setOnClickListener(v -> requestHint());
@@ -76,14 +78,16 @@ public class MobileVerifyActivity extends AppCompatActivity implements GoogleApi
                 .build();
 
 
-
-        txForgot.setOnClickListener(new View.OnClickListener() {
+        rlLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MobileVerifyActivity.this,ForgotPasswordActivity.class));
+                startActivity(new Intent(MobileVerifyActivity.this,LoginActivity.class));
             }
         });
-        btn_next.setOnClickListener(new View.OnClickListener() {
+
+
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
