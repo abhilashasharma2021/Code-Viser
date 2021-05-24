@@ -98,7 +98,9 @@
 
         <meta-data
             android:name="com.razorpay.ApiKey"
-            android:value="rzp_test_mlVclXpQjjSlfm" />
+            android:value="rzp_live_Z34m79NyfHxwax" />
+
+        <!-- android:value="rzp_test_mlVclXpQjjSlfm" /> GYMVYM-->
     </application>
 
 </manifest>

@@ -58,7 +58,7 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
                 holder.rowsubscriptionlayoutBinding.btnBuy.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        razorPayImp.startPayment(mContext, "1", "INR", "Code Viser");
+                        razorPayImp.startPayment(mContext, "100", "INR", "Code Viser");
                         subscribtionFragment.GetSubsId(modelObject.getSubscriptionID());
                     }
                 });

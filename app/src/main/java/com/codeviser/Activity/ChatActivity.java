@@ -104,7 +104,7 @@ public class ChatActivity extends AppCompatActivity {
 
         recyclechat.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        chat();
+       // chat();
 
 
 

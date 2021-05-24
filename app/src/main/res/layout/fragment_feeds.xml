@@ -3,50 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
 
     tools:context=".Fragment.FeedsFragment">
 
+
+
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-         android:visibility="gone"
-        android:background="@drawable/header1">
+        android:id="@+id/rel"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@color/purple_700">
 
         <ImageView
-            android:id="@+id/img_vedio"
-            android:layout_width="40dp"
+            android:id="@+id/ivBack"
+            android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/morevert"/>
+            android:padding="5dp"
+            android:visibility="gone"
+            android:src="@drawable/back"
+            app:tint="@color/white" />
 
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
-            android:layout_width="40dp"
-            android:layout_toRightOf="@+id/img_back"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/circleimg"
-            app:civ_border_width="2dp" />
         <TextView
-            android:layout_toRightOf="@+id/profile_image"
-            android:layout_width="wrap_content"
+            android:id="@+id/txt"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold"
             android:layout_centerVertical="true"
-
-            android:textSize="16sp"
-            android:text="Neelam mehra"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/robotobold"
+            android:gravity="center"
+            android:text="Feeds"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
     </RelativeLayout>
-
 
 
 

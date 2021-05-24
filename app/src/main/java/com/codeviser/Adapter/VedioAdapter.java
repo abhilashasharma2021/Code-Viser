@@ -7,6 +7,7 @@ import android.media.MediaMetadataRetriever;
 import android.media.ThumbnailUtils;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,12 +54,15 @@ public class VedioAdapter extends RecyclerView.Adapter<VedioAdapter.ViewHolder> 
 
      //  holder.image.setImageResource(vedioModel.getUserimage());
 
+     // holder. txlink.setMovementMethod(LinkMovementMethod.getInstance());
+
         if (!vedioModel.equals("")){
 
             String mediaType=vedioModel.getType();
             /*image_video_type=0 means video image_video_type=1 means image */
 
             holder.txTitle.setText(vedioModel.getTitle());
+            holder. txTitle.setMovementMethod(LinkMovementMethod.getInstance());
 
             if (mediaType.equals("1")){
 
@@ -115,7 +119,7 @@ public class VedioAdapter extends RecyclerView.Adapter<VedioAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView image,ivUser,playBtn;
-        TextView txUserName,txTitle;
+        TextView txUserName,txTitle,txlink;
         RelativeLayout rlmain;
 
         public ViewHolder(@NonNull View itemView) {
@@ -126,6 +130,7 @@ public class VedioAdapter extends RecyclerView.Adapter<VedioAdapter.ViewHolder> 
             txTitle=itemView.findViewById(R.id.txTitle);
             playBtn=itemView.findViewById(R.id.playBtn);
             rlmain=itemView.findViewById(R.id.rlmain);
+            txlink=itemView.findViewById(R.id.txlink);
 
         }
     }

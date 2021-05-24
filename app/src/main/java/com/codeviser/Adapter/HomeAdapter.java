@@ -2,6 +2,7 @@ package com.codeviser.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,23 +44,31 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        HomeModel homeModel=messageHomeModelArrayList.get(position);
+        HomeModel homemodelobj=messageHomeModelArrayList.get(position);
+        Log.e("yukmk", "check: " +homemodelobj);
 
+        if (homemodelobj !=null){
 
-        if (!homeModel.equals("")){
+            Log.e("HomeAdapter", "onBindViewHolder: " +homemodelobj);
             try {
-                Glide.with(context).load(homeModel.getPath()+homeModel.getUserimage()).into(holder.profile_image);
+                Glide.with(context).load(homemodelobj.getPath()+homemodelobj.getUserimage()).into(holder.profile_image);
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            holder.txt_name.setText(homeModel.getName());
-            holder.txt_msg.setText(homeModel.getLastMsg());
-            holder.txtTime.setText(homeModel.getLastTime());
+            Log.e("fdbfb", "onBindViewHolder: " +homemodelobj.getName());
+            Log.e("fdbfb", "onBindViewHolder: " +homemodelobj.getLastMsg());
+
+            holder.txt_name.setText(homemodelobj.getName());
+            holder.txt_msg.setText(homemodelobj.getLastMsg());
+            holder.txtTime.setText(homemodelobj.getLastTime());
+
+
+
             holder.relative.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SharedHelper.putKey(context, AppConstats.GroupId, homeModel.getGroupID());
+                    SharedHelper.putKey(context, AppConstats.GroupId, homemodelobj.getGroupID());
                context.startActivity(new Intent(context, ChatActivity.class));
                 }
             });

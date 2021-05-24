@@ -6,24 +6,8 @@ public class HomeModel {
     private String path;
     private String lastMsg;
     private String Id;
-
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-        Id = id;
-    }
-
-    public String getGroupID() {
-        return groupID;
-    }
-
-    public void setGroupID(String groupID) {
-        this.groupID = groupID;
-    }
-
     private String groupID;
+    private String lastTime;
 
     public String getUserimage() {
         return userimage;
@@ -57,6 +41,22 @@ public class HomeModel {
         this.lastMsg = lastMsg;
     }
 
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
+    }
+
+    public String getGroupID() {
+        return groupID;
+    }
+
+    public void setGroupID(String groupID) {
+        this.groupID = groupID;
+    }
+
     public String getLastTime() {
         return lastTime;
     }
@@ -65,7 +65,15 @@ public class HomeModel {
         this.lastTime = lastTime;
     }
 
-    private String lastTime;
+    public String getLastDate() {
+        return lastDate;
+    }
+
+    public void setLastDate(String lastDate) {
+        this.lastDate = lastDate;
+    }
+
+    private String lastDate;
 
 
 }

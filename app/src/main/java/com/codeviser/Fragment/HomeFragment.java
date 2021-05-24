@@ -134,7 +134,7 @@ public class HomeFragment extends Fragment {
         dialog.showDialog(R.layout.progress_layout, getActivity());
 
         AndroidNetworking.post(API_BaseUrl.BaseUrl + API_BaseUrl.show_group)
-                .addBodyParameter("user_id","308")
+                .addBodyParameter("user_id","264 ")
                 .setTag("Show Video and Image")
                 .setPriority(Priority.HIGH)
                 .build()
@@ -143,7 +143,7 @@ public class HomeFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         dialog.hideDialog();
                         messageHomeModelArrayList=new ArrayList<>();
-                        Log.e("HomeFragment", "onResponse: " +response);
+                        Log.e("bhfgtxbhgf", "onResponse: " +response);
 
                         try {
                             if (response.getString("result").equals("true")) {
@@ -151,24 +151,38 @@ public class HomeFragment extends Fragment {
                                 if (!response.getString("data").isEmpty()) {
                                     for (int i = 0; i <jsonArray.length() ; i++) {
                                         JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                        String id=jsonObject.getString("id");
+                                        String group_id=jsonObject.getString("group_id");
+                                        String groups=jsonObject.getString("groups");
+                                        JSONObject object=new JSONObject(groups);
+                                        String last_message=object.getString("last_message");
+                                        JSONObject jsonObject1=new JSONObject(last_message);
 
                                         HomeModel model=new HomeModel();
+
+
                                         model.setGroupID(jsonObject.getString("group_id"));
                                         model.setId(jsonObject.getString("id"));
-                                        model.setName(jsonObject.getString("group_name"));
-                                        model.setUserimage(jsonObject.getString("image"));
-                                        model.setPath(jsonObject.getString("path"));
-                                        model.setLastTime(jsonObject.getString("time"));
-                                        model.setLastMsg(jsonObject.getString("last_maz"));
+                                        model.setName(object.getString("name"));
+                                        model.setUserimage(object.getString("image"));
+                                        model.setPath(object.getString("path"));
+                                        Log.e("sxcxzvc", "name: " +object.getString("name"));
+                                        Log.e("sxcxzvc", "path: " +object.getString("path"));
+                                        Log.e("sxcxzvc", "image: " +object.getString("image"));
+                                        Log.e("sxcxzvc", "message: " +jsonObject1.getString("message"));
+                                        model.setLastTime(jsonObject1.getString("time"));
+                                        model.setLastDate(jsonObject1.getString("dates"));
+                                        model.setLastMsg(jsonObject1.getString("message"));
                                         messageHomeModelArrayList.add(model);
                                     }
+
                                     homeAdapter = new HomeAdapter(messageHomeModelArrayList, getActivity());
                                     recycleview_message.setAdapter(homeAdapter);
                                 }
                             }
                         } catch (JSONException e) {
                             dialog.hideDialog();
-                            Log.e("HomeFragment", "e: " +e);
+                            Log.e("fdbgfb", "e: " +e);
                         }
                     }
 
@@ -176,7 +190,7 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onError(ANError anError) {
                         dialog.hideDialog();
-                        Log.e("HomeFragment", "onError: " +anError);
+                        Log.e("yhnjghmn", "onError: " +anError);
                     }
                 });
     }

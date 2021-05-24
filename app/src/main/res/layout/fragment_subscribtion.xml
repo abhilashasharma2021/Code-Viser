@@ -22,7 +22,6 @@
                     android:id="@+id/rel"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:layout_weight="1"
                     android:background="@color/purple_700">
 
                     <ImageView

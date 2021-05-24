@@ -122,12 +122,12 @@ public class SubscribtionFragment extends Fragment implements PaymentResultListe
     @Override
     public void onPaymentSuccess(String s) {
         Log.e("abhkdksj", "onPayment: "+ s);
-      // confirm_booking(subscriptionId);
+         confirm_booking(subscriptionId);
     }
 
     @Override
     public void onPaymentError(int i, String s) {
-        Log.e("abhkdksj", "onPaymentError: "+ s);
+        Log.e("bjbjdfkh", "onPaymentError: "+ s);
         Toasty.error(getActivity(),"Failed Payment",Toasty.LENGTH_LONG).show();
     }
 
@@ -143,7 +143,7 @@ public class SubscribtionFragment extends Fragment implements PaymentResultListe
               .getAsJSONObject(new JSONObjectRequestListener() {
                   @Override
                   public void onResponse(JSONObject response) {
-                      Log.e("SubscribtionFragment", "onResponse: " +response);
+                      Log.e("dsvfdsvb", "onResponse: " +response);
                       try {
                           if (response.getString("result").equals("true")){
                               String data=response.getString("data");
@@ -152,16 +152,16 @@ public class SubscribtionFragment extends Fragment implements PaymentResultListe
 
                           }
                           else {
-                              Toasty.success(getActivity(),"Something went wrong",Toasty.LENGTH_LONG).show();
+                              Toasty.error(getActivity(),"Something went wrong",Toasty.LENGTH_LONG).show();
                           }
                       } catch (JSONException e) {
-                          Log.e("SubscribtionFragment", "onResponse: " +e.getMessage());
+                          Log.e("cvbcbhg", "onResponse: " +e.getMessage());
                       }
                   }
 
                   @Override
                   public void onError(ANError anError) {
-                      Log.e("SubscribtionFragment", "onError: " +anError);
+                      Log.e("fgdffgbn", "onError: " +anError);
                   }
               });
 

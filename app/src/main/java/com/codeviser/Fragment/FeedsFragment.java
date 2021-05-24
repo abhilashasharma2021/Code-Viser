@@ -51,8 +51,6 @@ public class FeedsFragment extends Fragment {
 
         rvVideo.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
-
-       // show();
        showItems();
         return view;
     }
@@ -61,6 +59,7 @@ public class FeedsFragment extends Fragment {
 
     private void showItems() {
         String stUserId = SharedHelper.getKey(getActivity(), AppConstats.USERID);
+
         CustomDialog dialog = new CustomDialog();
         dialog.showDialog(R.layout.progress_layout, getActivity());
 
