@@ -12,11 +12,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.bumptech.glide.Glide;
 import com.codeviser.Adapter.ChatAdapter;
 import com.codeviser.Adapter.VedioAdapter;
 import com.codeviser.Model.ChatModel;
@@ -29,6 +31,7 @@ import com.codeviser.other.ProgressBarCustom.CustomDialog;
 import com.jaiselrahman.filepicker.activity.FilePickerActivity;
 import com.jaiselrahman.filepicker.config.Configurations;
 import com.jaiselrahman.filepicker.model.MediaFile;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,7 +53,10 @@ public class ChatActivity extends AppCompatActivity {
     ImageView imgAttach;
     CardView cardAttach;
     RelativeLayout rlCamera,rlVideo;
-
+    String getGroupType="",getGroupImage,getGroupName;
+    RelativeLayout rlAdmin,rlSend;
+    TextView txName;
+     ImageView profile_image;
     ArrayList<File> fileList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,41 @@ public class ChatActivity extends AppCompatActivity {
         cardAttach = findViewById(R.id.cardAttach);
         rlCamera = findViewById(R.id.rlCamera);
         rlVideo = findViewById(R.id.rlVideo);
+        rlSend = findViewById(R.id.rlSend);
+        profile_image = findViewById(R.id.profile_image);
+        rlAdmin = findViewById(R.id.rlAdmin);
+        txName = findViewById(R.id.txName);
+        getGroupType = SharedHelper.getKey(getApplicationContext(), AppConstats.GROUPTYPE);
+        getGroupImage = SharedHelper.getKey(getApplicationContext(), AppConstats.GROUPEIMAGE);
+        getGroupName = SharedHelper.getKey(getApplicationContext(), AppConstats.GROUPENAME);
+        /*type = 0 means  one way communication like  channel and type = 1  two way communication*/
+
+        if (!getGroupName.isEmpty()){
+            txName.setText(getGroupName);
+        }
+
+        if (!getGroupImage.isEmpty()){
+            try {
+                Glide.with(ChatActivity.this).load(getGroupImage).into(profile_image);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+        if (!getGroupType.isEmpty()){
+            if (getGroupType.equals("0")) {
+
+                rlAdmin.setVisibility(View.VISIBLE);
+                rlSend.setVisibility(View.GONE);
+            }else {
+                rlAdmin.setVisibility(View.GONE);
+                rlSend.setVisibility(View.VISIBLE);
+            }
+
+        }
+
 
         imgAttach.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +145,7 @@ public class ChatActivity extends AppCompatActivity {
 
         recyclechat.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-       // chat();
+       chat();
 
 
 
@@ -199,20 +240,38 @@ public class ChatActivity extends AppCompatActivity {
                                     JSONArray jsonArray=new JSONArray(chat);
                                     for (int i = 0; i <jsonArray.length() ; i++) {
                                         JSONObject jsonObject=jsonArray.getJSONObject(i);
-                                        ChatModel model=new ChatModel();
-                                        model.setGroupId(jsonObject.getString("group_id"));
-                                        model.setMessage(jsonObject.getString("message"));
-                                        model.setTime(jsonObject.getString("time"));
-                                        model.setFile(jsonObject.getString("file"));
-                                        model.setPath(jsonObject.getString("path"));
-                                       // model.setUserName(jsonObject.getString("path"));
-                                        //model.setType(jsonObject.getString(""));
-                                        chatModelArrayList.add(model);
+
+                                        String user_detail=jsonObject.getString("user_detail");
+                                        JSONObject jsonObject1=new JSONObject(user_detail);
+                                        String file=jsonObject.getString("file");
+                                        if (!file.isEmpty()){
+                                            JSONArray array=new JSONArray(file);
+                                            for (int j = 0; j <array.length() ; j++) {
+                                                JSONObject object=array.getJSONObject(j);
+
+                                                ChatModel model=new ChatModel();
+                                                model.setGroupId(jsonObject.getString("group_id"));
+                                                model.setMessage(jsonObject.getString("message"));
+                                                model.setTime(jsonObject.getString("strtotime"));
+                                                model.setUserName(jsonObject1.getString("userName"));
+                                                model.setUserImage(jsonObject1.getString("userImage"));
+                                                model.setUserPath(jsonObject1.getString("path"));
+                                                model.setFile(object.getString("file"));
+                                                model.setPath(object.getString("path"));
+                                                model.setType(object.getString("type"));
+                                                chatModelArrayList.add(model);
+
+
+                                            }
+                                            chatAdapter= new ChatAdapter(chatModelArrayList, ChatActivity.this);
+                                            recyclechat.setAdapter(chatAdapter);
+                                        }
+
+                                        }
+
 
                                     }
-                                    chatAdapter= new ChatAdapter(chatModelArrayList, ChatActivity.this);
-                                    recyclechat.setAdapter(chatAdapter);
-                                }
+
 
                             }
                         } catch (JSONException e) {

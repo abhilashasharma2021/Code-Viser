@@ -82,4 +82,11 @@ dependencies {
 
     //rozarpayment
     implementation 'com.razorpay:checkout:1.5.16'
+
+
+    ///pullrefresh
+    implementation 'com.baoyz.pullrefreshlayout:library:1.2.0'
+
+
+
 }

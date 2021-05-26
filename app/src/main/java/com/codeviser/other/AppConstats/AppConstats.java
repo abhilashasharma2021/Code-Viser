@@ -13,6 +13,9 @@ public class AppConstats {
     public static final String GroupId="GroupId";
     public static final String USERIMAGE="USERIMAGE";
     public static final String USERDOB="USERDOB";
+    public static final String GROUPTYPE="GROUPTYPE";
+    public static final String GROUPENAME="GROUPENAME";
+    public static final String GROUPEIMAGE="GROUPEIMAGE";
 
 
 

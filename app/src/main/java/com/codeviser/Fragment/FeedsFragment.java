@@ -1,5 +1,9 @@
 package com.codeviser.Fragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,17 +14,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.baoyz.widget.PullRefreshLayout;
 import com.codeviser.Adapter.VedioAdapter;
 import com.codeviser.Model.VedioModel;
 import com.codeviser.R;
 import com.codeviser.other.API_BaseUrl;
 import com.codeviser.other.AppConstats.AppConstats;
 import com.codeviser.other.AppConstats.SharedHelper;
+import com.codeviser.other.Connectivity;
 import com.codeviser.other.ProgressBarCustom.CustomDialog;
 
 import org.json.JSONArray;
@@ -28,6 +35,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class FeedsFragment extends Fragment {
@@ -35,7 +43,7 @@ public class FeedsFragment extends Fragment {
     VedioAdapter vedioAdapter;
     ArrayList<VedioModel> vedioModelArrayList = new ArrayList<>();
     RecyclerView rvVideo;
-
+    Connectivity connectivity;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +56,23 @@ public class FeedsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_feeds, container, false);
         rvVideo = view.findViewById(R.id.rvVideo);
 
+        PullRefreshLayout layout = view.findViewById(R.id.swipeRefreshLayout);
+
+        layout.setOnRefreshListener(() -> layout.postDelayed(() -> {
+            layout.setRefreshing(false);
+            showItems();
+        }, 2000));
+
+        connectivity=new Connectivity(getActivity());
 
         rvVideo.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
-       showItems();
+        if (connectivity.isOnline()){
+            showItems();
+        }else {
+            Toast.makeText(getActivity(),"Please check internet connection",Toast.LENGTH_SHORT).show();
+        }
+
         return view;
     }
 

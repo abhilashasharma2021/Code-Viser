@@ -49,9 +49,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
         if (homemodelobj !=null){
 
-            Log.e("HomeAdapter", "onBindViewHolder: " +homemodelobj);
+            Log.e("HomeAdapter", "onBindViewHolder: " +homemodelobj.getPath()+homemodelobj.getUserimage());
             try {
-                Glide.with(context).load(homemodelobj.getPath()+homemodelobj.getUserimage()).into(holder.profile_image);
+                Glide.with(context).load(homemodelobj.getPath()+homemodelobj.getUserimage()).into(holder.ivProfile);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -69,6 +69,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     SharedHelper.putKey(context, AppConstats.GroupId, homemodelobj.getGroupID());
+                    SharedHelper.putKey(context, AppConstats.GROUPTYPE, homemodelobj.getType());
+                    SharedHelper.putKey(context, AppConstats.GROUPENAME, homemodelobj.getName());
+                    SharedHelper.putKey(context, AppConstats.GROUPEIMAGE, homemodelobj.getPath()+homemodelobj.getUserimage());
+                    /*type = 0 means  one way communication like  channel and type = 1  two way communication*/
                context.startActivity(new Intent(context, ChatActivity.class));
                 }
             });
@@ -82,12 +86,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView profile_image;
+        ImageView ivProfile;
         TextView txt_name,txt_msg,txtTime;
         RelativeLayout relative;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            profile_image=itemView.findViewById(R.id.profile_image);
+            ivProfile=itemView.findViewById(R.id.ivProfile);
             txt_name=itemView.findViewById(R.id.txt_name);
             txt_msg=itemView.findViewById(R.id.txt_msg);
             relative=itemView.findViewById(R.id.relative);

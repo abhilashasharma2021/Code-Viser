@@ -49,7 +49,6 @@ public class OtpActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-
             if (SmsRetriever.SMS_RETRIEVED_ACTION.equals(intent.getAction())) {
 
                 Bundle extras = intent.getExtras();

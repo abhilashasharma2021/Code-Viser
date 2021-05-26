@@ -13,7 +13,7 @@
             android:id="@+id/linear"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                     android:layout_toLeftOf="@+id/imgvedioCalling"
                     android:src="@drawable/calling"/>
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_image"
                     android:layout_width="40dp"
                     android:layout_toRightOf="@+id/img_back"
@@ -61,51 +61,39 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:textStyle="bold"
+                    android:id="@+id/txName"
+                    android:fontFamily="@font/robotobold"
                     android:textSize="16sp"
                     android:text="Neelam mehra"/>
             </RelativeLayout>
 
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="wrap_content"
-                    android:id="@+id/recyclechat"
-                    android:layout_height="wrap_content">
-                </androidx.recyclerview.widget.RecyclerView>
 
 
-            <RelativeLayout
-                android:id="@+id/relative1"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <RelativeLayout
-                    android:id="@+id/relative"
-                    android:layout_margin="10dp"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_alignParentBottom="true"
-                    android:background="@drawable/bordershape">
-                    <TextView
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:textColor="#0865A4"
-                        android:textSize="14sp"
-                        android:text="Chat for only Admin"/>
-                </RelativeLayout>
-            </RelativeLayout>
 
 
 
 
         </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:id="@+id/recyclechat"
+        android:layout_below="@+id/linear"
+        android:layout_marginBottom="80dp"
+        android:layout_height="wrap_content">
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rlScroll"
+        android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
+        android:visibility="visible"
+        android:id="@+id/rlSend"
         android:layout_height="60dp">
 
         <com.google.android.material.card.MaterialCardView
@@ -156,6 +144,48 @@
 
 
     </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:id="@+id/rlAdmin"
+        android:visibility="gone"
+        android:layout_height="60dp">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            app:cardCornerRadius="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            app:cardElevation="8dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#0865A4"
+                android:layout_gravity="center"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:fontFamily="@font/robotobold"
+                android:text="Chat for only Admin"/>
+
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+    </RelativeLayout>
+
+
+    </RelativeLayout>
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_margin="20dp"

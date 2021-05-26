@@ -3,6 +3,25 @@ package com.codeviser.Model;
 public class ChatModel {
     private String message;
     private String image;
+    private String userImage;
+    private String userPath;
+
+    public String getUserPath() {
+        return userPath;
+    }
+
+    public void setUserPath(String userPath) {
+        this.userPath = userPath;
+    }
+
+    public String getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
+    }
+
     private String path;
     private String file;
     private String date;

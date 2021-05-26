@@ -23,6 +23,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_margin="5dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="8dp"
                 >

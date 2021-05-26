@@ -6,6 +6,16 @@ public class HomeModel {
     private String path;
     private String lastMsg;
     private String Id;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    private String type;
     private String groupID;
     private String lastTime;
 

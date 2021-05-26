@@ -42,8 +42,10 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
         }
 
         binding.customBottomBar.inflateMenu(R.menu.bottom_nav);
+
         Menu menuItem =  binding.customBottomBar.getMenu();
         menuItem.getItem(2).setChecked(true);
+
         binding.customBottomBar.setOnNavigationItemSelectedListener(this);
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override

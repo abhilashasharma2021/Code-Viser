@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="5dp"
     android:layout_height="wrap_content">
 
@@ -11,20 +12,19 @@
         >
 
         <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/image"
+            android:id="@+id/ivUser"
             android:layout_width="40dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/circleimg"
             app:civ_border_width="2dp" />
 
     </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_toRightOf="@+id/relative"
+            android:layout_marginRight="10dp"
             android:background="@drawable/blueshape"
             android:layout_height="wrap_content">
             <TextView
@@ -32,10 +32,11 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/robotoregular"
+                android:fontFamily="@font/robotobold"
                 android:gravity="center_vertical"
                 android:layout_marginRight="10dp"
                 android:paddingStart="10dp"
+                android:textColor="@color/blue"
                 android:paddingEnd="10dp"
                 android:textSize="14sp"
                 android:paddingRight="10dp"
@@ -47,32 +48,51 @@
                 android:layout_below="@+id/txtName"
                 android:id="@+id/rlNew"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:id="@+id/Image"
-                    android:scaleType="center"
-                    android:visibility="visible"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/demo"/>
 
-                <ImageView
-                    android:id="@+id/playBtn"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:visibility="gone"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/button" />
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:cardCornerRadius="6dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Image"
+                        android:scaleType="fitXY"
+                        android:visibility="visible"
+                        android:src="@drawable/demo"/>
+
+                    <ImageView
+                        android:id="@+id/playBtn"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/button" />
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+
             </RelativeLayout>
 
 
 
             <TextView
                 android:layout_width="wrap_content"
-                android:text="Message"
+                android:text=""
                 android:layout_below="@+id/rlNew"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
+                android:id="@+id/txMessage"
+                android:autoLink="web"
+                android:textColorLink="@color/blue"
+                android:clickable="true"
                 android:layout_marginBottom="15dp"
                 android:layout_marginRight="10dp"
                 android:fontFamily="@font/robotoregular"

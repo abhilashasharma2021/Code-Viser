@@ -134,7 +134,7 @@ public class HomeFragment extends Fragment {
         dialog.showDialog(R.layout.progress_layout, getActivity());
 
         AndroidNetworking.post(API_BaseUrl.BaseUrl + API_BaseUrl.show_group)
-                .addBodyParameter("user_id","264 ")
+                .addBodyParameter("user_id","264")
                 .setTag("Show Video and Image")
                 .setPriority(Priority.HIGH)
                 .build()
@@ -155,6 +155,7 @@ public class HomeFragment extends Fragment {
                                         String group_id=jsonObject.getString("group_id");
                                         String groups=jsonObject.getString("groups");
                                         JSONObject object=new JSONObject(groups);
+                                        String type=object.getString("type");/*type = 0 means  one way communication like  channel and type = 1  two way communication*/
                                         String last_message=object.getString("last_message");
                                         JSONObject jsonObject1=new JSONObject(last_message);
 
@@ -165,13 +166,14 @@ public class HomeFragment extends Fragment {
                                         model.setId(jsonObject.getString("id"));
                                         model.setName(object.getString("name"));
                                         model.setUserimage(object.getString("image"));
+                                        model.setType(object.getString("type"));
                                         model.setPath(object.getString("path"));
                                         Log.e("sxcxzvc", "name: " +object.getString("name"));
                                         Log.e("sxcxzvc", "path: " +object.getString("path"));
                                         Log.e("sxcxzvc", "image: " +object.getString("image"));
                                         Log.e("sxcxzvc", "message: " +jsonObject1.getString("message"));
-                                        model.setLastTime(jsonObject1.getString("time"));
-                                        model.setLastDate(jsonObject1.getString("dates"));
+                                        model.setLastTime(jsonObject1.getString("strtotime"));
+                                       // model.setLastDate(jsonObject1.getString("dates"));
                                         model.setLastMsg(jsonObject1.getString("message"));
                                         messageHomeModelArrayList.add(model);
                                     }
