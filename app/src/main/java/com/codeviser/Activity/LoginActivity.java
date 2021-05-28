@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,12 +15,10 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.codeviser.R;
-import com.codeviser.SignActivity;
 import com.codeviser.other.API_BaseUrl;
 import com.codeviser.other.AppConstats.AppConstats;
 import com.codeviser.other.AppConstats.SharedHelper;
 import com.codeviser.other.ProgressBarCustom.CustomDialog;
-import com.google.android.gms.common.api.Api;
 import com.google.android.material.button.MaterialButton;
 
 import org.json.JSONException;

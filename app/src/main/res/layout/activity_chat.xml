@@ -116,6 +116,7 @@
                     android:paddingLeft="10dp"
                     android:layout_centerVertical="true"
                     android:paddingRight="30dp"
+                    android:id="@+id/etMsg"
                     android:fontFamily="@font/robotoregular"
                     android:background="@null"
                     android:textSize="14sp"

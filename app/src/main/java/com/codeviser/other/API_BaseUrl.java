@@ -19,6 +19,7 @@ public class API_BaseUrl {
     public static String search_message="search_message";
     public static String show_subscription="show_subscription";
     public static String subscribe_now="subscribe_now";
+    public static String groups_chat="groups_chat";
     public static String login="login";
 
 

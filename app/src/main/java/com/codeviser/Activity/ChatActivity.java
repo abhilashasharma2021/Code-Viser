@@ -6,10 +6,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,11 +20,10 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.androidnetworking.interfaces.UploadProgressListener;
 import com.bumptech.glide.Glide;
 import com.codeviser.Adapter.ChatAdapter;
-import com.codeviser.Adapter.VedioAdapter;
 import com.codeviser.Model.ChatModel;
-import com.codeviser.Model.VedioModel;
 import com.codeviser.R;
 import com.codeviser.other.API_BaseUrl;
 import com.codeviser.other.AppConstats.AppConstats;
@@ -31,15 +32,20 @@ import com.codeviser.other.ProgressBarCustom.CustomDialog;
 import com.jaiselrahman.filepicker.activity.FilePickerActivity;
 import com.jaiselrahman.filepicker.config.Configurations;
 import com.jaiselrahman.filepicker.model.MediaFile;
-import com.mikhaellopez.circularimageview.CircularImageView;
+import com.sdsmdg.tastytoast.TastyToast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -53,10 +59,14 @@ public class ChatActivity extends AppCompatActivity {
     ImageView imgAttach;
     CardView cardAttach;
     RelativeLayout rlCamera,rlVideo;
-    String getGroupType="",getGroupImage,getGroupName;
+    String getGroupType="",getGroupImage="",getGroupName="",strDescription="";
     RelativeLayout rlAdmin,rlSend;
     TextView txName;
-     ImageView profile_image;
+     ImageView profile_image,imgSend;
+    ProgressDialog dialog;
+    EditText etMsg;
+    String stType="";
+
     ArrayList<File> fileList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +78,8 @@ public class ChatActivity extends AppCompatActivity {
         rlCamera = findViewById(R.id.rlCamera);
         rlVideo = findViewById(R.id.rlVideo);
         rlSend = findViewById(R.id.rlSend);
+        imgSend = findViewById(R.id.imgSend);
+        etMsg = findViewById(R.id.etMsg);
         profile_image = findViewById(R.id.profile_image);
         rlAdmin = findViewById(R.id.rlAdmin);
         txName = findViewById(R.id.txName);
@@ -103,6 +115,8 @@ public class ChatActivity extends AppCompatActivity {
         }
 
 
+
+
         imgAttach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +130,7 @@ public class ChatActivity extends AppCompatActivity {
                                 .setShowImages(true)
                                 .setShowVideos(false)
                                 .enableImageCapture(true)
-                                .setMaxSelection(3)
+                                .setMaxSelection(1)
                                 .setSkipZeroSizeFiles(true)
                                 .build());
                         startActivityForResult(intent, FILE_IMAGE_REQUEST_CODE);
@@ -145,7 +159,7 @@ public class ChatActivity extends AppCompatActivity {
 
         recyclechat.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-       chat();
+        show_chat();
 
 
 
@@ -179,7 +193,17 @@ public class ChatActivity extends AppCompatActivity {
                     Log.e("skasksasasa", fileList.get(i).toString());
                 }
 
-               // uploadFiles(fileList, "0", strDescription);
+                cardAttach.setVisibility(View.GONE);
+                imgSend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        strDescription = etMsg.getText().toString().trim();
+
+                        uploadFiles(fileList,  strDescription);
+
+                    }
+                });
+
 
 
             } else {
@@ -208,7 +232,17 @@ public class ChatActivity extends AppCompatActivity {
 
                 }
 
-              //  uploadFiles(fileList, "1", strDescription);
+                cardAttach.setVisibility(View.GONE);
+                imgSend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        strDescription = etMsg.getText().toString().trim();
+
+                        uploadFiles(fileList,  strDescription);
+
+                    }
+                });
+
 
             } else {
 
@@ -217,7 +251,7 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
-    public void chat() {
+    public void show_chat() {
         String groupId = SharedHelper.getKey(getApplicationContext(), AppConstats.GroupId);
         CustomDialog dialog = new CustomDialog();
         dialog.showDialog(R.layout.progress_layout, this);
@@ -289,4 +323,87 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    private void uploadFiles(ArrayList<File> fileList, String strDescription) {
+
+        String groupId = SharedHelper.getKey(getApplicationContext(), AppConstats.GroupId);
+        String userId = SharedHelper.getKey(getApplicationContext(), AppConstats.USERID);
+        dialog = new ProgressDialog(this);
+        dialog.setTitle("Uploading files");
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(true);
+
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+                .connectTimeout(150, TimeUnit.SECONDS)
+                .readTimeout(150, TimeUnit.SECONDS)
+                .writeTimeout(150, TimeUnit.SECONDS)
+                .build();
+
+
+        AndroidNetworking.upload(API_BaseUrl.BaseUrl + API_BaseUrl.groups_chat)
+                .addMultipartParameter("group_id", groupId)
+                .addMultipartParameter("user_id", userId)
+                .addMultipartParameter("message1", strDescription)
+                .addMultipartFileList("file[]",fileList)
+                .setOkHttpClient(okHttpClient)
+                .setTag("uploadFiles")
+                .build()
+                .setUploadProgressListener(new UploadProgressListener() {
+                    @Override
+                    public void onProgress(long bytesUploaded, long totalBytes) {
+                        Log.e("sdgdfg", totalBytes + "");
+                        double p = ((bytesUploaded / (float) totalBytes) * 100);
+                        dialog.setProgress((int) p);
+                        dialog.setMessage("please wait...." + new DecimalFormat("##.##").format(p) + " %");
+                        dialog.show();
+
+                    }
+                })
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+
+                        Log.e("ChatActivity", "onResponse: " +response);
+                        try {
+                            if (response.has("result")) {
+
+                                String strResult = response.getString("result");
+                                String message = response.getString("message");
+                                if (strResult.equals("true")) {
+
+                                    etMsg.setText("");
+                                    show_chat();
+                                    TastyToast.makeText(getApplicationContext(), "Download Successful!", TastyToast.LENGTH_LONG, TastyToast.SUCCESS);
+                                    dialog.hide();
+                                } else {
+                                    dialog.hide();
+                                    TastyToast.makeText(getApplicationContext(), "Down" +
+                                            "loading failed ! Try again later", TastyToast.LENGTH_LONG, TastyToast.ERROR);
+                                }
+
+                            } else {
+                                dialog.hide();
+                                TastyToast.makeText(getApplicationContext(), "Downloading failed ! Try again later", TastyToast.LENGTH_LONG, TastyToast.ERROR);
+
+                            }
+                        }   catch (JSONException e) {
+                                    dialog.hide();
+                                    Log.e("fsdggvc", Objects.requireNonNull(e.getMessage()));
+                            }
+
+
+
+
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        dialog.hide();
+                        Log.e("shfdjh", Objects.requireNonNull(anError.getMessage()));
+                    }
+                });
+
+
+    }
 }
