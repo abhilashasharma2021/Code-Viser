@@ -9,7 +9,8 @@ public class API_BaseUrl {
     public static String create_profile="create_profile";
     public static String update_profile="update_profile";
     public static String show_profile="update_profile";
-    public static String help_to_support="help_to_support";
+    public static String help_to_support="send_query";
+    public static String query_support="query_support";
     public static String change_password="change_password";
     public static String forget_password="forget_password";
     public static String resend_otp="resend_otp";

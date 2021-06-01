@@ -106,6 +106,8 @@ public class FeedsFragment extends Fragment {
                                         model.setPath(jsonObject.getString("path"));
                                         model.setFile(jsonObject.getString("file"));
                                         model.setTitle(jsonObject.getString("title"));
+                                        model.setName(jsonObject.getString("admin_name"));
+                                        model.setImage(jsonObject.getString("admin_img"));
                                         vedioModelArrayList.add(model);
                                     }
 

@@ -62,7 +62,15 @@ public class VedioAdapter extends RecyclerView.Adapter<VedioAdapter.ViewHolder> 
             /*image_video_type=0 means video image_video_type=1 means image */
 
             holder.txTitle.setText(vedioModel.getTitle());
+            holder.txUserName.setText(vedioModel.getName());
             holder. txTitle.setMovementMethod(LinkMovementMethod.getInstance());
+
+            try {
+                Glide.with(context).load(vedioModel.getPath()+vedioModel.getImage()).error(R.drawable.profileimg).into(holder.ivUser);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
 
             if (mediaType.equals("1")){
 

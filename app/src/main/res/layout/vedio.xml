@@ -108,7 +108,7 @@
             android:layout_marginTop="10dp"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-
+           android:visibility="gone"
             android:layout_marginLeft="10dp"
             android:src="@drawable/document"/>
         <ImageView
@@ -116,7 +116,7 @@
             android:layout_width="25dp"
             android:layout_height="20dp"
             android:layout_marginTop="20dp"
-            android:layout_toLeftOf="@+id/img_save"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -126,6 +126,7 @@
             android:layout_width="25dp"
             android:layout_height="20dp"
             android:layout_marginTop="20dp"
+            android:visibility="gone"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"

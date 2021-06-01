@@ -3,11 +3,13 @@
     <item
         android:id="@+id/web"
         android:icon="@drawable/scan"
+        android:visible="false"
         android:title="@string/code_viser_web" />
 
     <item
         android:id="@+id/msg"
         android:icon="@drawable/msgnn"
+        android:visible="false"
         android:title="@string/starred_messages" />
     <item
         android:id="@+id/payment"

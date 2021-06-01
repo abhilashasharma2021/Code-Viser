@@ -46,6 +46,7 @@ String stEmail="",stQuery="";
 
             }
         });
+        query_with_admin();
 
         binding.btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,9 +57,9 @@ String stEmail="",stQuery="";
                 if (stQuery.equals("")) {
                     Toast.makeText(HelpActivity.this, "Please mention your query", Toast.LENGTH_SHORT).show();
                 } else if (stEmail.equals("")) {
-                    Toast.makeText(HelpActivity.this, "Please mention your registerd Email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HelpActivity.this, "Please mention your registered Email", Toast.LENGTH_SHORT).show();
                 } else {
-                  //  query_with_admin();
+                  help();
                 }
             }
         });
@@ -76,7 +77,7 @@ String stEmail="",stQuery="";
         AndroidNetworking.post(API_BaseUrl.BaseUrl + API_BaseUrl.help_to_support)
                 .addBodyParameter("user_id", stUSERID)
                 .addBodyParameter("email", stEmail)
-                .addBodyParameter("query", stQuery)
+                .addBodyParameter("description", stQuery)
                 .setTag("send help msg to admin")
                 .setPriority(Priority.HIGH)
                 .build()
@@ -86,12 +87,9 @@ String stEmail="",stQuery="";
                         Log.e("retr5yg", response.toString());
                         dialog.hideDialog();
                         try {
-                            if (response.getString("result").equals("Successfully")) {
-                                String user_id = response.getString("user_id");
-                                String email = response.getString("email");
-                                String id = response.getString("id");
-
-
+                            if (response.getString("result").equals("successfully")) {
+                                binding.txtEmail.setText("");
+                                binding.txtQuery.setText("");
                                 Toasty.success(HelpActivity.this, response.getString("result"), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(HelpActivity.this, "Please enter registered Email address", Toast.LENGTH_SHORT).show();
@@ -114,4 +112,34 @@ String stEmail="",stQuery="";
                 });
     }
 
+
+    private void query_with_admin(){
+
+        AndroidNetworking.post(API_BaseUrl.BaseUrl + API_BaseUrl.query_support)
+                .setTag("query msg")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            if (response.getString("result").equals("true")){
+
+                                JSONObject jsonObject=new JSONObject(response.getString("data"));
+                                binding.txtdetails.setText(jsonObject.getString("description"));
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
     }
