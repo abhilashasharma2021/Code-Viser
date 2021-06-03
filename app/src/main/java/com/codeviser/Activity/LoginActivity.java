@@ -27,7 +27,7 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity {
 
     MaterialButton login_btn;
-    EditText etEmail,etPassword;
+    EditText etEmail,etPassword,etMobile;
     TextView  txtforgotPass,txtNew;
     String stEmail="",stPassword="";
     @Override
@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         txtforgotPass=findViewById(R.id.txtforgotPass);
         txtNew=findViewById(R.id.txtNew);
         etPassword=findViewById(R.id.etPassword);
+        etMobile=findViewById(R.id.etMobile);
         etEmail=findViewById(R.id.etEmail);
         txtforgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,12 +50,19 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stEmail=etEmail.getText().toString().trim();
+                stEmail=etMobile.getText().toString().trim();
                 stPassword=etPassword.getText().toString().trim();
 
 
                 if (stEmail.isEmpty()){
-                   etEmail.setError("Registered Email Address Must Required");
-                }else if (stPassword.isEmpty()){
+                   etEmail.setError("Registered email is  Required");
+
+                }
+
+                else if (stEmail.isEmpty()){
+                    etMobile.setError("Registered mobile number  Required");
+                }
+                else if (stPassword.isEmpty()){
                    etPassword.setError("Password Must Required");
                 }
                 else {
@@ -111,6 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                             } else {
                                 Toast.makeText(LoginActivity.this, response.getString("message"), Toast.LENGTH_SHORT).show();
                                 dialog.hideDialog();
+
                             }
                         } catch (JSONException e) {
                             Log.e("fhgfrnhgf", e.getMessage());

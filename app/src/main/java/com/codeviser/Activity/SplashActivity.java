@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -37,6 +38,9 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+      //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+
         setContentView(R.layout.activity_splash);
 
         ivSplash=findViewById(R.id.ivSplash);
@@ -86,7 +90,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
                     }
-                }, 3000);
+                }, 9000);
             }
 
             @Override
