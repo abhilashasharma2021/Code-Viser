@@ -16,6 +16,7 @@ public class AppConstats {
     public static final String GROUPTYPE="GROUPTYPE";
     public static final String GROUPENAME="GROUPENAME";
     public static final String GROUPEIMAGE="GROUPEIMAGE";
+    public static final String PROVIDER="PROVIDER";
 
 
 

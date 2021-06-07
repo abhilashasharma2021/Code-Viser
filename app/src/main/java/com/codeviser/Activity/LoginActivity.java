@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -29,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     MaterialButton login_btn;
     EditText etEmail,etPassword,etMobile;
     TextView  txtforgotPass,txtNew;
-    String stEmail="",stPassword="";
+    String stEmail="",stPassword="",stMobile="",stFinal="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,29 +47,71 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this,ForgotPasswordActivity.class));
             }
         });
+
+        etEmail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                stEmail=s+"";
+                stMobile="";
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+        etMobile.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                stMobile=s+"";
+                stEmail="";
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
         login_btn=findViewById(R.id.login_btn);
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stEmail=etEmail.getText().toString().trim();
-                stEmail=etMobile.getText().toString().trim();
+
                 stPassword=etPassword.getText().toString().trim();
 
+                Log.e("dsvsvsew", stEmail+"stEmail");
+                Log.e("dsvsvsew", stMobile+"stMobile");
 
-                if (stEmail.isEmpty()){
-                   etEmail.setError("Registered email is  Required");
 
+                if (!stEmail.equals("")){
+                    stFinal=stEmail;
                 }
-
-                else if (stEmail.isEmpty()){
-                    etMobile.setError("Registered mobile number  Required");
+                if (!stMobile.equals("")){
+                    stFinal=stMobile;
                 }
-                else if (stPassword.isEmpty()){
-                   etPassword.setError("Password Must Required");
-                }
-                else {
+                if (stFinal.equals("")){
+                    Toast.makeText(LoginActivity.this, "Enter your detail", Toast.LENGTH_SHORT).show();
+                }else {
                     login();
                 }
+
+
+
+
 
             }
         });
@@ -85,8 +129,11 @@ public class LoginActivity extends AppCompatActivity {
     private  void  login(){
         CustomDialog dialog = new CustomDialog();
         dialog.showDialog(R.layout.progress_layout, LoginActivity.this);
+
+        Log.e("LoginActivity", "stEmail: " +stEmail);
+        Log.e("LoginActivity", "stPassword: " +stFinal);
         AndroidNetworking.post(API_BaseUrl.BaseUrl + API_BaseUrl.login)
-                .addBodyParameter("email", stEmail)
+                .addBodyParameter("email", stFinal)
                 .addBodyParameter("password", stPassword)
                 .setPriority(Priority.HIGH)
                 .build()

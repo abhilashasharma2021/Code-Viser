@@ -92,4 +92,7 @@ dependencies {
     implementation 'com.github.GrenderG:Toasty:1.5.0'
     implementation 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
 
+    //google integration
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
 }

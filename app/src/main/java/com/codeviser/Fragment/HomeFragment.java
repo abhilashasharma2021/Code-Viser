@@ -1,8 +1,10 @@
 package com.codeviser.Fragment;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -36,12 +39,16 @@ import com.codeviser.other.API_BaseUrl;
 import com.codeviser.other.AppConstats.AppConstats;
 import com.codeviser.other.AppConstats.SharedHelper;
 import com.codeviser.other.ProgressBarCustom.CustomDialog;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
+
+import static com.codeviser.Activity.MobileVerifyActivity.mGoogleSignInClient;
 
 
 public class HomeFragment extends Fragment {
@@ -49,6 +56,7 @@ public class HomeFragment extends Fragment {
     ArrayList<HomeModel> messageHomeModelArrayList = new ArrayList<>();
     RecyclerView recycleview_message;
     ImageView iv_settings;
+    String getProvider="";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +71,10 @@ public class HomeFragment extends Fragment {
         recycleview_message = view.findViewById(R.id.recycleview_message);
 
         recycleview_message.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+
+        getProvider = SharedHelper.getKey(getActivity(), AppConstats.PROVIDER);
+
 
 
         iv_settings=view.findViewById(R.id.iv_settings);
@@ -82,9 +94,22 @@ public class HomeFragment extends Fragment {
 
                         else if (menuItem.getItemId() == R.id.logout){
 
-                            logout();
 
-                        }/*else if (menuItem.getItemId() == R.id.ip_address) {
+                            if (getProvider.equals("Normal")){
+                                logout();
+                            }
+
+                            else if (getProvider.equals("google")) {
+                                ////////////////// google logout////////////////////////////
+                               // signOut();
+                            }
+
+
+
+
+
+
+                            }/*else if (menuItem.getItemId() == R.id.ip_address) {
                             final Dialog dialog = new Dialog(MainActivity.this);
                             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                             dialog.setCancelable(true);
@@ -224,6 +249,32 @@ public class HomeFragment extends Fragment {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
 
+    }
+
+    //////////////////////////////google logout integrtion without firebase//////////////////////////////////////////////
+
+    private void signOut() {
+
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(Objects.requireNonNull(getActivity()), task -> {
+
+                    if (task.isSuccessful()) {
+
+                        task.addOnSuccessListener(Objects.requireNonNull(getActivity()), new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+
+                                SharedHelper.putKey(getActivity(), AppConstats.USERID, "");
+                                startActivity(new Intent(getActivity(), SplashActivity.class));
+                                getActivity().finish();
+
+
+                            }
+                        });
+                    } else {
+                        Toast.makeText(getActivity(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 }

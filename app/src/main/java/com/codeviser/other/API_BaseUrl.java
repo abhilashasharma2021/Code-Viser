@@ -22,6 +22,7 @@ public class API_BaseUrl {
     public static String subscribe_now="subscribe_now";
     public static String groups_chat="groups_chat";
     public static String login="login";
+    public static String social_login="social_login";
 
 
 

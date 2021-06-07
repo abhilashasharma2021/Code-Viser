@@ -5,9 +5,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -31,8 +33,14 @@ import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.auth.api.credentials.HintRequest;
 import com.google.android.gms.auth.api.phone.SmsRetriever;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.Api;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
@@ -45,16 +53,21 @@ import es.dmoral.toasty.Toasty;
 
 import static com.codeviser.other.API_BaseUrl.BaseUrl;
 
-public class MobileVerifyActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class MobileVerifyActivity extends AppCompatActivity {
 
     MaterialButton btnNext;
-    String mobile = "";
     String number = "";
     ImageView phone;
     EditText et_verify;
-    private GoogleApiClient mCredentialsApiClient;
-    private static final int RC_HINT = 1000;
     RelativeLayout rlLogin;
+    /*Register project in google developer conole without firebase
+    * google Developers Console - Google Cloud Platformhttps://console.developers.google.com › project
+*/
+    ////////////////////google interation with firebase/////////////////////
+    public static final int RC_GOOGLE_SIGN_IN = 9999;
+    RelativeLayout relGoogle;
+    SignInButton signInButton;
+    public static GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,21 +75,13 @@ public class MobileVerifyActivity extends AppCompatActivity implements GoogleApi
         setContentView(R.layout.activity_mobile_verify2);
         btnNext = findViewById(R.id.btnNext);
         phone = findViewById(R.id.phone);
-
         et_verify = findViewById(R.id.et_verify);
-
+        relGoogle = findViewById(R.id.relGoogle);
         rlLogin = findViewById(R.id.rlLogin);
 
 
-        phone.setOnClickListener(v -> requestHint());
 
-
-        mCredentialsApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .enableAutoManage(this, this)
-                .addApi(Auth.CREDENTIALS_API)
-                .build();
-
+        googleSignIn();
 
         rlLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,7 +147,10 @@ public class MobileVerifyActivity extends AppCompatActivity implements GoogleApi
                                     SharedHelper.putKey(getApplicationContext(), AppConstats.OTP, jsonObject.getString("otp"));
                                     SharedHelper.putKey(getApplicationContext(), AppConstats.USERID, jsonObject.getString("userID"));
                                     SharedHelper.putKey(getApplicationContext(), AppConstats.USERMOBILE, jsonObject.getString("userMobile"));
+                                    SharedHelper.putKey(getApplicationContext(), AppConstats.PROVIDER, "Normal");
                                     Log.e("MobileVerifyActivity", "otp: " + jsonObject.getString("otp"));
+
+
 
                                 }
 
@@ -168,65 +176,110 @@ public class MobileVerifyActivity extends AppCompatActivity implements GoogleApi
                 });
     }
 
-    private void requestHint() {
-        HintRequest hintRequest = new HintRequest.Builder()
-                .setPhoneNumberIdentifierSupported(true)
+
+
+    ////////////////////////*Google interration without firebase*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public void googleSignIn() {
+
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
                 .build();
 
-        PendingIntent intent = Auth.CredentialsApi.getHintPickerIntent(
-                mCredentialsApiClient, hintRequest);
-        try {
-            startIntentSenderForResult(intent.getIntentSender(), RC_HINT, null, 0, 0, 0);
-        } catch (IntentSender.SendIntentException e) {
-            Log.e("jghjgj", "Could not start hint picker Intent", e);
-        }
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+
+        signInButton = findViewById(R.id.sign_in_button);
+        signInButton.setSize(SignInButton.SIZE_STANDARD);
+
+        relGoogle.setOnClickListener(view -> signIn());
     }
 
-    @Override
-    public void onConnected(@Nullable Bundle bundle) {
-        Log.d("kjghjj", "Connected");
-    }
 
-    @Override
-    public void onConnectionSuspended(int cause) {
-        Log.d("TAG", "GoogleApiClient is suspended with cause code: " + cause);
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_GOOGLE_SIGN_IN);
     }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.d("TAG", "GoogleApiClient failed to connect: " + connectionResult);
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_HINT) {
-            if (resultCode == RESULT_OK) {
-                Credential cred = data.getParcelableExtra(Credential.EXTRA_KEY);
 
-                if (cred != null) {
-                    Log.e("TAG", "onActivityResult: " + cred.getId());
-                    et_verify.setText(cred.getId());
 
-                    Task<Void> task = SmsRetriever.getClient(MobileVerifyActivity.this).startSmsUserConsent(cred.getId());
+        if (requestCode == RC_GOOGLE_SIGN_IN) {
 
-                    task.addOnCompleteListener(task1 -> {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
+    }
 
-                        if (task1.isSuccessful()) {
-                            Log.e("scuuu", String.valueOf(task1.getResult()) + "rr");
-                        }
-                    });
 
-                }
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
 
-            } else {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
-                Toast.makeText(this, "Didn't select mobile number", Toast.LENGTH_SHORT).show();
+            // Signed in successfully, show authenticated UI.
+            if (account != null) {
+                String name = account.getDisplayName();
+                String email = account.getEmail();
+                String authID = account.getId();
+                Uri imageURI = account.getPhotoUrl();
+                String image = String.valueOf(imageURI);
+
+                //      String regID = SharedHelper.getKey(LoginorRegisterActivity.this, AppConstats.REG_ID);
+                Log.e("wedwedwedwed", name + "," + email + "," + authID + "," + image);
+                // soicalGoogleLogin(authID, "google", name, email, image, regID);
+                 socialLogin(authID, "google",name,email);
             }
+
+
+        } catch (ApiException e) {
+
+            Log.e("kjckjsc", "signInResult:failed code=" + e.getStatusCode());
         }
 
 
     }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
+
+    private void socialLogin(String authID, String provider, String name, String email){
+
+        AndroidNetworking.post(API_BaseUrl.BaseUrl + API_BaseUrl.social_login)
+                .addBodyParameter("authID",authID)
+                .addBodyParameter("auth_provider",provider)
+                .addBodyParameter("name",name)
+                .addBodyParameter("email",email)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("MobileVerifyActivity", "onResponse: " +response);
+                        try {
+                            if (response.getString("result").equals("true")){
+
+                                JSONObject jsonObject=new JSONObject(response.getString("data"));
+
+                                SharedHelper.putKey(getApplicationContext(), AppConstats.USERID, jsonObject.getString("userID"));
+                                SharedHelper.putKey(getApplicationContext(), AppConstats.PROVIDER, jsonObject.getString("auth_provider"));
+
+                             Toasty.success(MobileVerifyActivity.this,response.getString("message"),Toasty.LENGTH_SHORT).show();
+                                startActivity(new Intent(MobileVerifyActivity.this, MainActivity.class));
+                            }
+                        } catch (JSONException e) {
+                            Log.e("MobileVerifyActivity", "e: " +e);
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Log.e("MobileVerifyActivity", "onError: " +anError);
+                    }
+                });
+
+    }
+    }
