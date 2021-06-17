@@ -2,10 +2,13 @@ package com.codeviser.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -45,6 +49,7 @@ public class FeedsFragment extends Fragment {
     ArrayList<VedioModel> vedioModelArrayList = new ArrayList<>();
     RecyclerView rvVideo;
     Connectivity connectivity;
+    TextView txt_tiest;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +60,10 @@ public class FeedsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+        /*getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);*/
         View view = inflater.inflate(R.layout.fragment_feeds, container, false);
         rvVideo = view.findViewById(R.id.rvVideo);
+
 
         PullRefreshLayout layout = view.findViewById(R.id.swipeRefreshLayout);
 
@@ -75,6 +81,32 @@ public class FeedsFragment extends Fragment {
         }else {
             Toast.makeText(getActivity(),"Please check internet connection",Toast.LENGTH_SHORT).show();
         }
+
+
+      /*  int nightModeFlags = getResources().getConfiguration().uiMode &
+                Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                Log.e("gsgssss", "1" );
+                int nightMode = AppCompatDelegate.getDefaultNightMode();
+                //Set the theme mode for the restarted activity
+                if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+                    AppCompatDelegate.setDefaultNightMode
+                            (AppCompatDelegate.MODE_NIGHT_NO);
+                }
+                txt_tiest.setBackgroundColor(Color.WHITE);
+                break;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+                Log.e("gsgssss", "2" );
+                txt_tiest.setBackgroundColor(Color.BLACK);
+
+                break;
+
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                Log.e("gsgssss", "3" );
+                break;
+        }*/
 
         return view;
     }

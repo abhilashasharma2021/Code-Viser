@@ -67,7 +67,6 @@ String stEmail="",stQuery="";
 
     }
 
-
     private void help() {
 
         String stUSERID = SharedHelper.getKey(getApplicationContext(), AppConstats.USERID);

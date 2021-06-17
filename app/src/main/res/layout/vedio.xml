@@ -39,7 +39,6 @@
         android:autoLink="web"
         android:textColorLink="@color/blue"
         android:clickable="true"
-        android:textColor="@color/black"
         android:textSize="13sp"/>
 
     <TextView
@@ -98,8 +97,7 @@
 </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@drawable/header1">
+        android:layout_height="60dp">
 
         <ImageView
             android:id="@+id/img_doc"

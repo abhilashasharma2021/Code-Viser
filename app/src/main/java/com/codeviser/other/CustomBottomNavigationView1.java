@@ -54,8 +54,9 @@ public class CustomBottomNavigationView1 extends BottomNavigationView {
         mPath = new Path();
         mPaint = new Paint();
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        mPaint.setColor(ContextCompat.getColor(getContext(), R.color.white));
+       mPaint.setColor(ContextCompat.getColor(getContext(), R.color.grey));
         setBackgroundColor(Color.TRANSPARENT);
+       /* setBackgroundColor(Color.TRANSPARENT);*/
     }
 
     @Override
@@ -109,5 +110,8 @@ public class CustomBottomNavigationView1 extends BottomNavigationView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawPath(mPath, mPaint);
+    }
+
+    public void setLayerPaint() {
     }
 }

@@ -25,12 +25,7 @@ ActivitySettingBinding binding;
             }
         });
 
-       binding.rlHelp.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               startActivity(new Intent(SettingActivity.this,HelpActivity.class));
-           }
-       });
+
         binding.rlChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

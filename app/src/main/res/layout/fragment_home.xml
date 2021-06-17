@@ -128,6 +128,17 @@
 
 
     </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHelp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview_message"
         android:layout_width="match_parent"
@@ -136,5 +147,4 @@
         android:layout_height="wrap_content">
 
     </androidx.recyclerview.widget.RecyclerView>
-
 </LinearLayout>

@@ -228,7 +228,7 @@
         android:fontFamily="@font/robotobold" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
 
@@ -250,7 +250,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_weight="1"
-                android:background="@color/white"
                 android:button="@null"
                 android:fontFamily="@font/robotomedium"
                 android:paddingRight="15dp"
@@ -265,7 +264,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:background="@color/white"
                 android:button="@null"
                 android:layout_weight="1"
                 android:fontFamily="@font/robotomedium"

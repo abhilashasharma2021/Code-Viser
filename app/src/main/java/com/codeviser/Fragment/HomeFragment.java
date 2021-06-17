@@ -33,6 +33,7 @@ import com.codeviser.Activity.MainActivity;
 import com.codeviser.Activity.SettingActivity;
 import com.codeviser.Activity.SplashActivity;
 import com.codeviser.Adapter.HomeAdapter;
+import com.codeviser.Adapter.HomeShowHelpGroupAdapter;
 import com.codeviser.Model.HomeModel;
 import com.codeviser.R;
 import com.codeviser.other.API_BaseUrl;
@@ -54,9 +55,10 @@ import static com.codeviser.Activity.MobileVerifyActivity.mGoogleSignInClient;
 public class HomeFragment extends Fragment {
     HomeAdapter homeAdapter;
     ArrayList<HomeModel> messageHomeModelArrayList = new ArrayList<>();
-    RecyclerView recycleview_message;
+    RecyclerView recycleview_message,rvHelp;
     ImageView iv_settings;
     String getProvider="";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,9 +71,10 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recycleview_message = view.findViewById(R.id.recycleview_message);
+        rvHelp = view.findViewById(R.id.rvHelp);
 
         recycleview_message.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-
+        rvHelp.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
         getProvider = SharedHelper.getKey(getActivity(), AppConstats.PROVIDER);
 
@@ -101,7 +104,7 @@ public class HomeFragment extends Fragment {
 
                             else if (getProvider.equals("google")) {
                                 ////////////////// google logout////////////////////////////
-                               // signOut();
+                              signOut();
                             }
 
 
@@ -149,7 +152,11 @@ public class HomeFragment extends Fragment {
                 popupMenu.show();
             }
         });
+
+
         home();
+        showHelpToSupport();
+
         return  view;
     }
 
@@ -176,8 +183,6 @@ public class HomeFragment extends Fragment {
                                 if (!response.getString("data").isEmpty()) {
                                     for (int i = 0; i <jsonArray.length() ; i++) {
                                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                        String id=jsonObject.getString("id");
-                                        String group_id=jsonObject.getString("group_id");
                                         String groups=jsonObject.getString("groups");
                                         JSONObject object=new JSONObject(groups);
                                         String type=object.getString("type");/*type = 0 means  one way communication like  channel and type = 1  two way communication*/
@@ -275,6 +280,75 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(getActivity(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void showHelpToSupport(){
+
+        String stUserId = SharedHelper.getKey(getActivity(), AppConstats.USERID);
+
+        AndroidNetworking.post(API_BaseUrl.BaseUrl + API_BaseUrl.showhelpsupportgroup)
+                .addBodyParameter("user_id",stUserId)
+                .setTag("Show help to support group")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("check", "onResponse: " +response);
+
+                        messageHomeModelArrayList=new ArrayList<>();
+                        try {
+                            if (response.getString("result").equals("true")){
+
+                                JSONArray jsonArray = new JSONArray(response.getString("data"));
+                                if (!response.getString("data").isEmpty()){
+
+                                    for (int i = 0; i <jsonArray.length() ; i++) {
+                                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                        String id = jsonObject.getString("id");
+                                        String name = jsonObject.getString("name");
+                                        String image = jsonObject.getString("image");
+                                        String path = jsonObject.getString("path");
+                                        String help_status = jsonObject.getString("help_status");/*1 means add on help group and 0 means not added in help group*/
+                                        String status = jsonObject.getString("status");
+
+                                        String last_message=jsonObject.getString("lastmessage");
+                                        Log.e("check", "last_message: " +last_message);
+                                        JSONObject jsonObject1=new JSONObject(last_message);
+
+                                        HomeModel model=new HomeModel();
+
+
+                                        model.setId(jsonObject.getString("id"));
+                                        model.setHelp_status(jsonObject.getString("help_status"));
+                                        model.setStatus(jsonObject.getString("status"));
+                                        model.setName(jsonObject.getString("name"));
+                                        model.setUserimage(jsonObject.getString("image"));
+                                        model.setPath(jsonObject.getString("path"));
+                                        model.setLastMsg(jsonObject1.getString("message"));
+                                        messageHomeModelArrayList.add(model);
+
+                                    }
+                                    rvHelp.setVisibility(View.VISIBLE);
+                                    HomeShowHelpGroupAdapter   homeHelpAdapter = new HomeShowHelpGroupAdapter(messageHomeModelArrayList, getActivity());
+                                    rvHelp.setAdapter(homeHelpAdapter);
+
+                                }
+
+
+                            }
+                        } catch (JSONException e) {
+                            Log.e("check", "e: " + e.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Log.e("check", "anError: " +anError.getMessage());
+
+                    }
+                });
+
     }
 
 }

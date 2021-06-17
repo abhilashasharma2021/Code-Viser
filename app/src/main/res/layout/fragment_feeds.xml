@@ -8,6 +8,11 @@
 
     tools:context=".Fragment.FeedsFragment">
 
+ <!--   <TextView
+        android:layout_width="50dp"
+        android:id="@+id/txt_tiest"
+        android:layout_height="50dp"/>-->
+
 
 
     <RelativeLayout

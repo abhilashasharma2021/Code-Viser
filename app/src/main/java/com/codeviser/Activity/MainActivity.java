@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,9 +15,7 @@ import android.view.WindowManager;
 import com.codeviser.Fragment.HomeFragment;
 import com.codeviser.Fragment.FeedsFragment;
 import com.codeviser.Fragment.ProfileFragment;
-import com.codeviser.Fragment.SearchFragment;
 import com.codeviser.Fragment.SubscribtionFragment;
-import com.codeviser.Fragment.SupportFragment;
 import com.codeviser.R;
 import com.codeviser.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -25,6 +24,7 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
     ActivityMainBinding binding;
     private Context context;
     private View view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FeedsFragment()).commit();
             }
         });
+
+
     }
 
     @Override
@@ -63,12 +65,12 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                 break;
 
-            case R.id.search:
+            case R.id.subscription:
                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new SubscribtionFragment()).commit();
                 break;
 
-            case R.id.video:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new SupportFragment()).commit();
+            case R.id.support:
+                startActivity(new Intent(MainActivity.this,HelpActivity.class));
                 break;
             case R.id.profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).commit();

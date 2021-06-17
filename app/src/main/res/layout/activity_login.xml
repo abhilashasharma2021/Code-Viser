@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    style="?android:attr/textColorPrimary"
     tools:context=".Activity.LoginActivity">
 
     <RelativeLayout
@@ -50,6 +51,7 @@
                     android:layout_height="20sp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20sp"
+                    style="?attr/colorControlNormal"
                     android:src="@drawable/email"
                     app:tint="@color/purple_200" />
 
@@ -61,6 +63,7 @@
                     android:layout_toRightOf="@+id/email"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
+                    style="?attr/colorControlNormal"
                     android:hint="abc@gmail.com"
                     android:background="@null"
                     android:fontFamily="@font/robotoregular"
@@ -104,6 +107,7 @@
                     android:id="@+id/mobile"
                     android:layout_width="25dp"
                     android:layout_height="20sp"
+                    style="?attr/colorControlNormal"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20sp"
                     android:src="@drawable/phone"
@@ -157,6 +161,7 @@
                     android:layout_height="20sp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20sp"
+                    style="?attr/colorControlNormal"
                     android:src="@drawable/password"
                     app:tint="@color/purple_200" />
 

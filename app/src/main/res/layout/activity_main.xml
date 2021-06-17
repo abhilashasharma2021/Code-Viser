@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".Activity.MainActivity">
 
 
@@ -18,8 +19,9 @@
         app:tint="@color/white"
         android:src="@drawable/feed"
         android:focusable="true" />
-       <!-- -->
 
+
+     
 
 
     <FrameLayout
@@ -31,7 +33,7 @@
         >
 
     </FrameLayout>
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:elevation="10dp"
@@ -41,9 +43,8 @@
             android:id="@+id/customBottomBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             app:labelVisibilityMode="labeled" />
-
+      <!--  android:background="@color/white"-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:id="@+id/bottom_navigation"
@@ -57,7 +58,7 @@
         android:background="?android:windowBackground"
         app:menu="@menu/bottom_nav"/>
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 
 

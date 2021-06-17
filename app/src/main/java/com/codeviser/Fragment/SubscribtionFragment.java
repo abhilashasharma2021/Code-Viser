@@ -58,7 +58,13 @@ public class SubscribtionFragment extends Fragment implements PaymentResultListe
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         binding.rvSubscription.setLayoutManager(mLayoutManager);
 
+        binding.ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
 
+            }
+        });
 
         showSubscription();
         return view;

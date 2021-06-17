@@ -13,6 +13,7 @@
         android:title="@string/starred_messages" />
     <item
         android:id="@+id/payment"
+        android:visible="false"
         android:icon="@drawable/dollarsign"
         android:title="@string/payment"
         />

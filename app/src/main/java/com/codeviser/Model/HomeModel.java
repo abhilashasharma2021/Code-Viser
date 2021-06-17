@@ -6,6 +6,24 @@ public class HomeModel {
     private String path;
     private String lastMsg;
     private String Id;
+    private String help_status;
+    private String status;
+
+    public String getHelp_status() {
+        return help_status;
+    }
+
+    public void setHelp_status(String help_status) {
+        this.help_status = help_status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getType() {
         return type;

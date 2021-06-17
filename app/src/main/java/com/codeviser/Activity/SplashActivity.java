@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -19,7 +18,7 @@ import com.codeviser.R;
 import com.codeviser.other.API_BaseUrl;
 import com.codeviser.other.AppConstats.AppConstats;
 import com.codeviser.other.AppConstats.SharedHelper;
-import com.codeviser.other.ProgressBarCustom.CustomDialog;
+
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -30,6 +29,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
+import android.app.Activity;
+import android.os.Bundle;
 
 public class SplashActivity extends AppCompatActivity {
     String userId = "";

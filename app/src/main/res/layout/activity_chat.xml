@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D3EAF9"
+
     tools:context=".Activity.ChatActivity">
 
-
+   <!-- android:background="#D3EAF9"-->
         <LinearLayout
             android:id="@+id/linear"
             android:orientation="vertical"
@@ -19,7 +19,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
 
-                android:background="@drawable/header1">
+                >
+               <!-- android:background="@drawable/header1"-->
                 <ImageView
                     android:id="@+id/img_back"
                     android:layout_width="25dp"

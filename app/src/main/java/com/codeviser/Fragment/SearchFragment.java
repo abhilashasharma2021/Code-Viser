@@ -79,7 +79,7 @@ public class SearchFragment extends Fragment {
     }
 
     public void search(String strWord) {
-   String     stUserId = SharedHelper.getKey(getActivity(), AppConstats.USERID);
+   String  stUserId = SharedHelper.getKey(getActivity(), AppConstats.USERID);
         CustomDialog dialog=new CustomDialog();
         dialog.showDialog(R.layout.progress_layout,getActivity());
 

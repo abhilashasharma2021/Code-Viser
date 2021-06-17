@@ -6,12 +6,11 @@
         android:id="@+id/message"
         android:icon="@drawable/msggs"
         app:showAsAction="ifRoom" android:enabled="true"
-
         android:title="Messages"/>
 
 
     <item
-        android:id="@+id/search"
+        android:id="@+id/subscription"
         android:icon="@drawable/join"
         android:enabled="true"
         app:showAsAction="ifRoom"
@@ -22,7 +21,7 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/video"
+        android:id="@+id/support"
         android:icon="@drawable/support"
         app:showAsAction="ifRoom"
         android:enabled="true"
