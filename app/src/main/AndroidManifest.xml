@@ -14,106 +14,75 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.VideoPlayerActivity"
+        <activity android:name=".Activity.HelpChat"></activity>
+        <activity
+            android:name=".Activity.VideoPlayerActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
-        <activity android:name=".Activity.ChangePasswordActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
+        <activity
+            android:name=".Activity.ChangePasswordActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
-        <activity android:name=".Activity.HelpActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
+        <activity
+            android:name=".Activity.HelpActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
-        <activity android:name=".Activity.OtpActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
+        <activity
+            android:name=".Activity.OtpActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
-        <activity android:name=".Activity.LoginActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
+        <activity
+            android:name=".Activity.LoginActivity"
             android:configChanges="orientation|screenSize|uiMode"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
-        <activity android:name=".Activity.SettingActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
+        <activity
+            android:name=".Activity.SettingActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
-        <activity android:name=".Activity.PaymentActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
+        <activity
+            android:name=".Activity.PaymentActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
-        <activity android:name=".Activity.ForgotPasswordActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
+        <activity
+            android:name=".Activity.ForgotPasswordActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
-        <activity android:name=".Activity.ChatActivity" >
-
-        </activity>
-        <activity android:name=".Activity.CreateProfileActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
+        <activity android:name=".Activity.ChatActivity"></activity>
+        <activity
+            android:name=".Activity.CreateProfileActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
-        <activity android:name=".Activity.PasswordActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
+        <activity
+            android:name=".Activity.PasswordActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
-        <activity android:name=".Activity.MobileVerifyActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
+        <activity
+            android:name=".Activity.MobileVerifyActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
-        <activity android:name=".Activity.DashboardActivity2"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
+        <activity
+            android:name=".Activity.DashboardActivity2"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
-        <activity android:name=".Activity.WelcomeActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
+        <activity
+            android:name=".Activity.WelcomeActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
         <activity android:name=".Activity.SplashActivity">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-
-
-        <activity android:name=".Activity.MainActivity"
+        <activity
+            android:name=".Activity.MainActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
-           >
-
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
 
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_live_Z34m79NyfHxwax" />
-
-        <!-- android:value="rzp_test_mlVclXpQjjSlfm" /> GYMVYM-->
     </application>
-
-   <!--client Id
-    48761082538-at1rpbpo6vt64pgko14uacf75sgt06gr.apps.googleusercontent.com-->
-
-
-    <!--Client Secret
-    FtOoh4_6hvPJGtKeet_sOLui-->
 
 </manifest>

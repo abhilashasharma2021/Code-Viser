@@ -12,5 +12,5 @@
     <color name="grey">#B9BEC8</color>
     <color name="blue">#0865A4</color>
     <color name="viewgrey">#dbdbdb</color>
-
+    <color name="grey_light">#BF333333</color>
 </resources>

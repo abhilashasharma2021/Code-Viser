@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.HelpChat">
+    <LinearLayout
+        android:id="@+id/linear"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+
+            >
+            <!-- android:background="@drawable/header1"-->
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/back"/>
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileIV"
+                android:layout_width="40dp"
+                android:layout_toRightOf="@+id/imgBack"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/circleimg"
+                app:civ_border_width="2dp" />
+            <TextView
+                android:layout_toRightOf="@+id/profileIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:id="@+id/txName"
+                android:fontFamily="@font/robotobold"
+                android:textSize="16sp"
+                android:text="Neelam mehra"/>
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:id="@+id/rvShowHelpChat"
+        android:layout_below="@+id/linear"
+        android:layout_marginBottom="80dp"
+        android:layout_height="wrap_content">
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rlScroll"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:visibility="visible"
+            android:id="@+id/rlSend"
+            android:layout_height="60dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                app:cardCornerRadius="25dp"
+                android:layout_marginRight="45dp"
+                app:cardElevation="8dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="50dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Type a message"
+                        android:paddingLeft="10dp"
+                        android:layout_centerVertical="true"
+                        android:paddingRight="30dp"
+                        android:id="@+id/etMsg"
+                        android:fontFamily="@font/robotoregular"
+                        android:background="@null"
+                        android:textSize="14sp"
+                        android:singleLine="true"/>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <ImageView
+                android:id="@+id/imgSend"
+                android:layout_width="35dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/send"/>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        app:cardElevation="5dp"
+        android:visibility="gone"
+        app:cardCornerRadius="25dp"
+        android:id="@+id/cardAttach"
+        android:layout_alignParentBottom="true"
+        android:layout_height="100dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:weightSum="2"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/rlCamera"
+                android:layout_marginLeft="15dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgCamera"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/videocall"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/imgCamera"
+                    android:textSize="14sp"
+                    android:text="Cemra"/>
+
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/rlVideo"
+                android:layout_marginLeft="15dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgvedio"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/videocall"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:layout_below="@+id/imgvedio"
+                    android:textSize="14sp"
+                    android:text="Video"/>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

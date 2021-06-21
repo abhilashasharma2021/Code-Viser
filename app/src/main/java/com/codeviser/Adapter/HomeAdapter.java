@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.codeviser.Activity.ChatActivity;
+import com.codeviser.Activity.HelpChat;
 import com.codeviser.Activity.MobileVerifyActivity;
 import com.codeviser.Model.HomeModel;
 import com.codeviser.R;
@@ -62,20 +63,44 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             holder.txt_name.setText(homemodelobj.getName());
             holder.txt_msg.setText(homemodelobj.getLastMsg());
             holder.txtTime.setText(homemodelobj.getLastTime());
+           String status=homemodelobj.getStatus();
+
+            Log.e("HomeAdapter", "status: " +status);
+
+         if (status!=null){
+
+             if (status.equals("1")){
+
+                 holder.relative.setOnClickListener(new View.OnClickListener() {
+                     @Override
+                     public void onClick(View v) {
+
+
+                    /*help_status==1 me send query
+                    status=1 me admin  ne accept kiye*/
+                         SharedHelper.putKey(context, AppConstats.GroupId, homemodelobj.getGroupID());
+                         SharedHelper.putKey(context, AppConstats.GROUPTYPE, homemodelobj.getType());    /*type = 0 means  one way communication like  channel and type = 1  two way communication*/
+                         SharedHelper.putKey(context, AppConstats.GROUPENAME, homemodelobj.getName());
+                         SharedHelper.putKey(context, AppConstats.Status, homemodelobj.getStatus());
+                         SharedHelper.putKey(context, AppConstats.GROUPEIMAGE, homemodelobj.getPath()+homemodelobj.getUserimage());
+
+                         context.startActivity(new Intent(context, ChatActivity.class));
+                     }
+                 });
+             }
+             else {
 
 
 
-            holder.relative.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SharedHelper.putKey(context, AppConstats.GroupId, homemodelobj.getGroupID());
-                    SharedHelper.putKey(context, AppConstats.GROUPTYPE, homemodelobj.getType());
-                    SharedHelper.putKey(context, AppConstats.GROUPENAME, homemodelobj.getName());
-                    SharedHelper.putKey(context, AppConstats.GROUPEIMAGE, homemodelobj.getPath()+homemodelobj.getUserimage());
-                    /*type = 0 means  one way communication like  channel and type = 1  two way communication*/
-               context.startActivity(new Intent(context, ChatActivity.class));
-                }
-            });
+             }
+
+
+
+         }
+
+
+
+
         }
 
     }

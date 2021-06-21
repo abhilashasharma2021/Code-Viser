@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.codeviser.Activity.ChatActivity;
+import com.codeviser.Activity.HelpChat;
 import com.codeviser.Model.HomeModel;
 import com.codeviser.R;
 import com.codeviser.other.AppConstats.AppConstats;
@@ -67,12 +68,12 @@ public class HomeShowHelpGroupAdapter extends RecyclerView.Adapter<HomeShowHelpG
             holder.relative.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SharedHelper.putKey(context, AppConstats.GroupId, homemodelobj.getGroupID());
+                    SharedHelper.putKey(context, AppConstats.GroupId, homemodelobj.getId());
                     SharedHelper.putKey(context, AppConstats.GROUPTYPE, homemodelobj.getType());
                     SharedHelper.putKey(context, AppConstats.GROUPENAME, homemodelobj.getName());
                     SharedHelper.putKey(context, AppConstats.GROUPEIMAGE, homemodelobj.getPath()+homemodelobj.getUserimage());
                     /*type = 0 means  one way communication like  channel and type = 1  two way communication*/
-               context.startActivity(new Intent(context, ChatActivity.class));
+                  context.startActivity(new Intent(context, HelpChat.class));
                 }
             });
         }

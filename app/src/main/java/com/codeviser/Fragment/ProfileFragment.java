@@ -10,8 +10,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -32,18 +30,12 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.bumptech.glide.Glide;
-import com.codeviser.Activity.CreateProfileActivity;
 import com.codeviser.Activity.MainActivity;
-import com.codeviser.Adapter.ProfileAdapter;
-import com.codeviser.Adapter.SearchAdapter;
-import com.codeviser.Model.HomeModel;
-import com.codeviser.Model.ProfileModel;
 import com.codeviser.R;
 import com.codeviser.other.API_BaseUrl;
 import com.codeviser.other.AppConstats.AppConstats;
 import com.codeviser.other.AppConstats.SharedHelper;
 import com.codeviser.other.ProgressBarCustom.CustomDialog;
-import com.google.android.gms.common.api.Api;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,7 +44,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 

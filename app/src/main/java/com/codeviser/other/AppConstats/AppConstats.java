@@ -17,6 +17,8 @@ public class AppConstats {
     public static final String GROUPENAME="GROUPENAME";
     public static final String GROUPEIMAGE="GROUPEIMAGE";
     public static final String PROVIDER="PROVIDER";
+    public static final String HelpChatStatus="HelpChatStatus";
+    public static final String Status="Status";
 
 
 

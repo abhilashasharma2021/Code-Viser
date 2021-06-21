@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/relAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/rl_user"
+            android:layout_width="35dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/grey_circle"
+            android:layout_height="35dp">
+            <ImageView
+                android:id="@+id/imgUser"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:layout_centerInParent="true"
+                android:background="?actionBarItemBackground"
+                android:src="@drawable/user_100"
+                app:tint="@color/white" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:id="@+id/rl"
+            android:layout_marginRight="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/chatgrey"
+            android:layout_toRightOf="@+id/rl_user"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/tx_title"
+                android:fontFamily="@font/robotoregular"
+                android:text="-"
+                android:textSize="13sp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/rl_qty"
+            android:visibility="gone"
+            android:layout_below="@+id/rl"
+            android:layout_marginLeft="70dp"
+            android:layout_height="wrap_content">
+            <TextView
+
+                android:id="@+id/txt_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotoregular"
+                android:text="-"
+                android:textSize="14sp" />
+
+            <TextView
+
+                android:id="@+id/txt_at"
+                android:layout_toRightOf="@+id/txt_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/robotoregular"
+                android:text="at"
+                android:textSize="14sp" />
+
+            <TextView
+
+                android:id="@+id/txt_time"
+                android:layout_toRightOf="@+id/txt_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/robotoregular"
+                android:text="-"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relCurrent_user"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/rl_current_user"
+            android:layout_width="35dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/grey_circle"
+            android:layout_height="35dp">
+            <ImageView
+                android:id="@+id/imgCurrentUser"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:layout_centerInParent="true"
+                android:background="?actionBarItemBackground"
+                android:src="@drawable/user_100"
+                app:tint="@color/white" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:id="@+id/rl_user_chat"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/chatblue"
+            android:layout_toLeftOf="@+id/rl_current_user"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/tx_user_message"
+                android:fontFamily="@font/robotoregular"
+                android:text="-"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/rl_qtyC"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="70dp"
+            android:layout_below="@+id/rl_user_chat"
+            android:layout_height="wrap_content">
+            <TextView
+
+                android:id="@+id/txt_c_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotoregular"
+                android:text="-"
+                android:textSize="14sp" />
+
+            <TextView
+
+                android:id="@+id/txt_c_at"
+                android:layout_toRightOf="@+id/txt_c_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/robotoregular"
+                android:text="at"
+                android:textSize="14sp"/>
+
+
+
+
+            <TextView
+                android:id="@+id/txt_c_time"
+                android:layout_toRightOf="@+id/txt_c_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/robotoregular"
+                android:text="-"
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

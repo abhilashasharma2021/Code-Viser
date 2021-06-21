@@ -62,7 +62,7 @@ public class ChatActivity extends AppCompatActivity {
     String getGroupType="",getGroupImage="",getGroupName="",strDescription="";
     RelativeLayout rlAdmin,rlSend;
     TextView txName;
-     ImageView profile_image,imgSend;
+     ImageView profile_image,imgSend,img_back;
     ProgressDialog dialog;
     EditText etMsg;
     String stType="";
@@ -76,6 +76,7 @@ public class ChatActivity extends AppCompatActivity {
         imgAttach = findViewById(R.id.imgAttach);
         cardAttach = findViewById(R.id.cardAttach);
         rlCamera = findViewById(R.id.rlCamera);
+        img_back = findViewById(R.id.img_back);
         rlVideo = findViewById(R.id.rlVideo);
         rlSend = findViewById(R.id.rlSend);
         imgSend = findViewById(R.id.imgSend);
@@ -102,6 +103,13 @@ public class ChatActivity extends AppCompatActivity {
         }
 
 
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         if (!getGroupType.isEmpty()){
             if (getGroupType.equals("0")) {
 
@@ -113,6 +121,8 @@ public class ChatActivity extends AppCompatActivity {
             }
 
         }
+
+
 
 
 
@@ -406,4 +416,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
     }
+
+
+
 }

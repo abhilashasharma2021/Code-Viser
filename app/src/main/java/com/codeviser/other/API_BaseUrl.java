@@ -24,6 +24,7 @@ public class API_BaseUrl {
     public static String login="login";
     public static String social_login="social_login";
     public static String showhelpsupportgroup="helpsupportgroup";
+    public static String show_helpgroups_chat="show_helpgroups_chat";
 
 
 

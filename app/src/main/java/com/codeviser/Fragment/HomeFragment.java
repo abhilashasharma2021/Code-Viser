@@ -179,10 +179,12 @@ public class HomeFragment extends Fragment {
 
                         try {
                             if (response.getString("result").equals("true")) {
+
                                 JSONArray jsonArray = new JSONArray(response.getString("data"));
                                 if (!response.getString("data").isEmpty()) {
                                     for (int i = 0; i <jsonArray.length() ; i++) {
                                         JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                        String status=jsonObject.getString("status");/*Status 1 means purchased subscribtion nad 0 means not purchased subscription*/
                                         String groups=jsonObject.getString("groups");
                                         JSONObject object=new JSONObject(groups);
                                         String type=object.getString("type");/*type = 0 means  one way communication like  channel and type = 1  two way communication*/
@@ -193,6 +195,7 @@ public class HomeFragment extends Fragment {
 
 
                                         model.setGroupID(jsonObject.getString("group_id"));
+                                        model.setStatus(jsonObject.getString("status"));
                                         model.setId(jsonObject.getString("id"));
                                         model.setName(object.getString("name"));
                                         model.setUserimage(object.getString("image"));
@@ -287,7 +290,7 @@ public class HomeFragment extends Fragment {
         String stUserId = SharedHelper.getKey(getActivity(), AppConstats.USERID);
 
         AndroidNetworking.post(API_BaseUrl.BaseUrl + API_BaseUrl.showhelpsupportgroup)
-                .addBodyParameter("user_id",stUserId)
+                .addBodyParameter("user_id","1")
                 .setTag("Show help to support group")
                 .setPriority(Priority.HIGH)
                 .build()
