@@ -21,8 +21,8 @@ import com.codeviser.Adapter.SubscriptionAdapter;
 import com.codeviser.Model.SubscriptionModel;
 import com.codeviser.R;
 import com.codeviser.RozarPaymentIntegration.RazorPayImp;
+
 import com.codeviser.databinding.FragmentSubscribtionBinding;
-import com.codeviser.databinding.RowsubscriptionlayoutBinding;
 import com.codeviser.other.API_BaseUrl;
 import com.codeviser.other.AppConstats.AppConstats;
 import com.codeviser.other.AppConstats.SharedHelper;
@@ -106,6 +106,7 @@ public class SubscribtionFragment extends Fragment implements PaymentResultListe
                                 }
                                 adapter = new SubscriptionAdapter(context, subscriptionList,SubscribtionFragment.this);
                                 binding.rvSubscription.setAdapter(adapter);
+                                dialog.hideDialog();
                             }
                         } catch (JSONException e) {
                             dialog.hideDialog();

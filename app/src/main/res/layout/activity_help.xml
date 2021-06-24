@@ -58,7 +58,6 @@
                     android:layout_marginBottom="0dp"
                     android:gravity="center"
                     android:text="An anagram is a word or phrase formed  For example, the word anagram can be rearranged into nag a ram, also the word binary into brainy and the word adobe into abode.The precise in this practice strictly observing all the parts of the definition"
-                    android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -75,7 +74,6 @@
                     android:layout_height="wrap_content"
                     android:text="Email Address"
                     android:fontFamily="@font/robotobold"
-                    android:textColor="@color/black"
                     android:id="@+id/txt_email"
                     android:textSize="16dp"
                     android:layout_marginLeft="15dp"
@@ -139,7 +137,6 @@
 
                     android:gravity="center"
                     android:text="Query ?"
-                    android:textColor="@color/black"
                     android:textSize="16dp"
                     android:fontFamily="@font/robotobold"/>
 
@@ -167,7 +164,6 @@
                     android:maxLines="5"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
-                    android:textColor="@color/black"
                     android:textSize="14dp" />
 
 

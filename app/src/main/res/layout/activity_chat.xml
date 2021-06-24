@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".Activity.ChatActivity">
 
    <!-- android:background="#D3EAF9"-->
@@ -15,24 +14,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <RelativeLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-
-                >
+                app:cardElevation="8dp"
+                android:layout_height="80dp">
                <!-- android:background="@drawable/header1"-->
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
                 <ImageView
                     android:id="@+id/img_back"
                     android:layout_width="25dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/back"/>
+                    android:src="@drawable/back"
+                    app:tint="@color/grey_light" />
                 <ImageView
                     android:id="@+id/imgvedioCalling"
                     android:layout_width="35dp"
                     android:layout_height="25dp"
-                    android:layout_marginTop="20dp"
+                    android:visibility="gone"
+                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
@@ -42,6 +48,7 @@
                     android:id="@+id/img_audio"
                     android:layout_width="35dp"
                     android:layout_height="25dp"
+                    android:visibility="gone"
                     android:layout_marginTop="20dp"
                     android:layout_toLeftOf="@+id/imgvedioCalling"
                     android:src="@drawable/calling"/>
@@ -51,7 +58,7 @@
                     android:layout_width="40dp"
                     android:layout_toRightOf="@+id/img_back"
                     android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/circleimg"
@@ -60,15 +67,19 @@
                     android:layout_toRightOf="@+id/profile_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_centerVertical="true"
                     android:textStyle="bold"
                     android:id="@+id/txName"
                     android:fontFamily="@font/robotobold"
                     android:textSize="16sp"
                     android:text="Neelam mehra"/>
-            </RelativeLayout>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-
+<View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:background="@color/viewgrey"/>
 
 
 
@@ -100,7 +111,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             app:cardCornerRadius="25dp"
-            android:layout_marginRight="45dp"
+            android:layout_marginRight="55dp"
             app:cardElevation="8dp"
             android:layout_marginBottom="5dp"
             android:layout_height="50dp">
@@ -135,14 +146,24 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <ImageView
-            android:id="@+id/imgSend"
-            android:layout_width="35dp"
-            android:layout_height="25dp"
-            android:layout_marginRight="5dp"
+        <RelativeLayout
+            android:layout_width="40dp"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/send"/>
+            android:layout_marginRight="5dp"
+            android:background="@drawable/blue_circle"
+            android:layout_height="40dp">
+
+            <ImageView
+                android:id="@+id/imgSend"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/sendwhite"
+                app:tint="@color/white" />
+
+        </RelativeLayout>
+
+
 
 
     </RelativeLayout>

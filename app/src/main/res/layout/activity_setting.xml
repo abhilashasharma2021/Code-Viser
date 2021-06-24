@@ -60,11 +60,7 @@
             android:layout_marginLeft="10dp"/>
 
     </RelativeLayout>
-    <View
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="#000"/>
+
     <RelativeLayout
         android:layout_marginTop="10dp"
         android:id="@+id/rlHelp"
@@ -94,7 +90,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#000"/>
+        android:background="@color/viewgrey"/>
 
     <RelativeLayout
         android:layout_marginTop="10dp"
@@ -121,5 +117,5 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#000"/>
+        android:background="@color/viewgrey"/>
 </LinearLayout>

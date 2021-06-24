@@ -61,7 +61,7 @@ public class MobileVerifyActivity extends AppCompatActivity {
     EditText et_verify;
     RelativeLayout rlLogin;
     /*Register project in google developer conole without firebase
-    * google Developers Console - Google Cloud Platformhttps://console.developers.google.com › project
+    * google Developers Console - Google Cloud Platform https://console.developers.google.com › project
 */
     ////////////////////google interation with firebase/////////////////////
     public static final int RC_GOOGLE_SIGN_IN = 9999;

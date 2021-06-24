@@ -11,10 +11,10 @@
     <string name="write_permission">Write External storage Permission not specified</string>
     <string name="unable_to_load_image">Unable to load image</string>
     <string name="next">next</string>
-    <string name="enter_your_n_mobile_number">Enter your \n Mobile Number</string>
+    <string name="enter_your_n_mobile_number">Enter your \nMobile Number</string>
     <string name="we_will_send_confirmation_code">We will send Confirmation code</string>
-    <string name="enter_code_send_n_to_your_number">Enter Code send \n to your Number</string>
-    <string name="enter_your_n_your_password">Enter your \n Your Password</string>
+    <string name="enter_code_send_n_to_your_number">Enter Code send \nto your Number</string>
+    <string name="enter_your_n_your_password">Enter your \nYour Password</string>
     <string name="we_will_send_confirmation_password">We will send Confirmation password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="create_your_profile">Create your Profile</string>
@@ -43,5 +43,5 @@
     <string name="new_user">New User ? <b><font color='#0865A4'>Register here</font></b></string>
     <string name="forgot_pass">Forgot Password ?<b><font color='#0865A4'> Click here</font></b></string>
     <string name="submit">Submit</string>
-    <string name="connect_with_google">Connect With Google</string>
+    <string name="connect_with_google">Connect with Google</string>
 </resources>
