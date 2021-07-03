@@ -3,7 +3,10 @@ package com.codeviser.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.MediaMetadataRetriever;
 import android.media.ThumbnailUtils;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.provider.MediaStore;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -27,6 +30,7 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -86,7 +90,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                 holder.Image.setMaxHeight(100);
 
 
-
+                Log.e("ChatAdapter", "video: " +chatModelobj.getPath() + chatModelobj.getFile());
 
                 try {
                     Bitmap thumbnail = ThumbnailUtils.createVideoThumbnail(chatModelobj.getPath() + chatModelobj.getFile(), MediaStore.Video.Thumbnails.FULL_SCREEN_KIND);
@@ -96,10 +100,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                 } catch (Throwable e) {
                     Log.e("ddcvb", "onBindViewHolder: " +e);
                 }
-
-
-
-
 
 
 
@@ -158,4 +158,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             ivUser=itemView.findViewById(R.id.ivUser);
         }
     }
+
+
+
+
+
 }

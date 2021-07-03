@@ -83,18 +83,19 @@ public class VedioAdapter extends RecyclerView.Adapter<VedioAdapter.ViewHolder> 
             else {
                 holder.playBtn.setVisibility(View.VISIBLE);
 
-              /*  RequestOptions requestOptions = new RequestOptions();
+                Log.e("VedioAdapter", "onBindViewHolder: " +vedioModel.getPath() + vedioModel.getFile());
+
+
+
+                /*Video thumbnail created*/
+
+                RequestOptions requestOptions = new RequestOptions();
                 Glide.with(context)
-                        .load("video_url")
+                        .load(vedioModel.getPath() + vedioModel.getFile())
                         .apply(requestOptions)
-                        .thumbnail(Glide.with(context).load(vedioModel.getPath() + vedioModel.getFile()))
-                        .into(holder.image);*/
-                try {
-                    Bitmap bm = retriveVideoFrameFromVideo(vedioModel.getPath());
-                   // holder.image.setImageBitmap(bm);
-                } catch (Throwable throwable) {
-                    throwable.printStackTrace();
-                }
+                        .thumbnail(Glide.with(context).load(vedioModel.getPath()+ vedioModel.getFile()))
+                        .into(holder.image);
+
 
               /*  try {
 
@@ -143,25 +144,5 @@ public class VedioAdapter extends RecyclerView.Adapter<VedioAdapter.ViewHolder> 
         }
     }
 
-    public static Bitmap retriveVideoFrameFromVideo(String videoPath) throws Throwable {
-        Bitmap bitmap = null;
-        MediaMetadataRetriever mediaMetadataRetriever = null;
-        try {
-            mediaMetadataRetriever = new MediaMetadataRetriever();
-            if (Build.VERSION.SDK_INT >= 14)
-                mediaMetadataRetriever.setDataSource(videoPath, new HashMap<String, String>());
-            else
-                mediaMetadataRetriever.setDataSource(videoPath);
-// mediaMetadataRetriever.setDataSource(videoPath);
-            bitmap = mediaMetadataRetriever.getFrameAtTime(1, MediaMetadataRetriever.OPTION_CLOSEST);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Throwable("Exception in retriveVideoFrameFromVideo(String videoPath)" + e.getMessage());
-        } finally {
-            if (mediaMetadataRetriever != null) {
-                mediaMetadataRetriever.release();
-            }
-        }
-        return bitmap;
-    }
+
 }

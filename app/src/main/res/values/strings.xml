@@ -25,6 +25,7 @@
     <string name="dd_mm_yyyy">DD/MM/YYYY</string>
     <string name="email_address">Email Address</string>
     <string name="gender">Gender</string>
+    <string name="con">CONTINUE</string>
     <string name="female">Female</string>
     <string name="male">Male</string>
     <string name="code_viser_web">Code Viser Web</string>
@@ -44,4 +45,5 @@
     <string name="forgot_pass">Forgot Password ?<b><font color='#0865A4'> Click here</font></b></string>
     <string name="submit">Submit</string>
     <string name="connect_with_google">Connect with Google</string>
+    <string name="investment_trading_in_securities_market_is_subject_to_market_risk_past_performance_is_not_a_guarantee_of_future_performance_the_risk_of_loss_in_trading_and_investment_in_securities_markets_including_equites_derivatives_commodity_and_currency_can_be_substantial_these_are_leveraged_products_that_carry_a_substantial_risk_of_loss_up_to_your_invested_capital_and_may_not_be_suitable_for_everyone_you_should_therefore_carefully_consider_whether_such_trading_is_suitable_for_you_in_light_of_your_financial_condition_please_ensure_that_you_understand_fully_the_risks_involved_and_do_invest_money_according_to_your_risk_bearing_capacity_codeviser_pvt_ltd_and_associate_companies_does_not_guarantee_any_returns_in_any_of_its_products_or_services_investment_in_markets_is_subject_to_market_risk_hence_codeviserpvt_ltd_and_its_associate_companies_are_not_liable_for_any_losses_in_any_case_all_our_services_are_nonrefundable">Investment/Trading in securities Market is subject to market risk, past performance is not a guarantee of future performance. The risk of loss in trading and investment in Securities markets including Equites, Derivatives, commodity and Currency can be substantial. These are leveraged products that carry a substantial risk of loss up to your invested capital and may not be suitable for everyone. You should therefore carefully consider whether such trading is suitable for you in light of your financial condition. Please ensure that you understand fully the risks involved and do invest money according to your risk bearing capacity. CodeViser Pvt. Ltd. and associate companies does not guarantee any returns in any of its products or services. Investment in markets is subject to market risk. Hence, CodeViserPvt. Ltd and its associate companies are not liable for any losses in any case. All our services are nonrefundable.</string>
 </resources>

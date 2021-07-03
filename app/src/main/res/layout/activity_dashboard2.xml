@@ -24,27 +24,28 @@
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp">
+        android:layout_marginTop="25dp"
+        android:layout_height="wrap_content">
         <TextView
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets c"
-            android:layout_centerInParent="true"
-            android:paddingStart="10dp"
+            android:textAlignment="center"
+            android:text="@string/investment_trading_in_securities_market_is_subject_to_market_risk_past_performance_is_not_a_guarantee_of_future_performance_the_risk_of_loss_in_trading_and_investment_in_securities_markets_including_equites_derivatives_commodity_and_currency_can_be_substantial_these_are_leveraged_products_that_carry_a_substantial_risk_of_loss_up_to_your_invested_capital_and_may_not_be_suitable_for_everyone_you_should_therefore_carefully_consider_whether_such_trading_is_suitable_for_you_in_light_of_your_financial_condition_please_ensure_that_you_understand_fully_the_risks_involved_and_do_invest_money_according_to_your_risk_bearing_capacity_codeviser_pvt_ltd_and_associate_companies_does_not_guarantee_any_returns_in_any_of_its_products_or_services_investment_in_markets_is_subject_to_market_risk_hence_codeviserpvt_ltd_and_its_associate_companies_are_not_liable_for_any_losses_in_any_case_all_our_services_are_nonrefundable"
+            android:layout_marginStart="10dp"
             android:textStyle="bold"
-            android:paddingLeft="10dp" />
+            android:layout_marginEnd="10dp"/>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="300dp"
             android:id="@+id/btn_continue"
-            android:layout_marginTop="20sp"
-            android:layout_below="@+id/text"
             android:layout_height="60dp"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/text"
+            android:layout_centerHorizontal="true"
             android:backgroundTint="#0865A4"
             app:cornerRadius="10dp"
-            android:layout_centerInParent="true"
-            android:text="CONTINUE">
+            android:text="@string/con">
 
         </com.google.android.material.button.MaterialButton>
     </RelativeLayout>

@@ -26,6 +26,7 @@ public class API_BaseUrl {
     public static String showhelpsupportgroup="helpsupportgroup";
     public static String term_condtion="term_condtion";
     public static String show_helpgroups_chat="show_helpgroups_chat";
+    public static String helpgroups_chat="helpgroups_chat";
 
 
 

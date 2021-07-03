@@ -3,10 +3,15 @@ package com.codeviser.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Binder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -35,9 +40,9 @@ import java.util.ArrayList;
 public class HelpChat extends AppCompatActivity {
 
     ActivityHelpChatBinding binding;
-
+   String strMsg="";
     ArrayList<ShowHelpChatModel> helpArrayList = new ArrayList<>();
-
+    private BroadcastReceiver mRegistrationBroadcastReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +66,22 @@ public class HelpChat extends AppCompatActivity {
         }
 
 
+        binding.rlSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                strMsg=binding.etMsg.getText().toString().trim();
+                if (strMsg.equals("")){
+
+                    Toast.makeText(HelpChat.this, "Type a message", Toast.LENGTH_SHORT).show();
+                }else{
+
+                    type_chat();
+                }
+
+            }
+        });
+
+
         binding.imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,8 +89,19 @@ public class HelpChat extends AppCompatActivity {
             }
         });
 
+
+
+        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                Log.e("guytguuygf","");
+                show_HelpChat();
+            }
+        };
+
         binding.rvShowHelpChat.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        show_HelpChat();
+
     }
 
 
@@ -129,4 +161,67 @@ public class HelpChat extends AppCompatActivity {
                     }
                 });
     }
+
+
+    private  void type_chat(){
+
+        String groupId = SharedHelper.getKey(HelpChat.this, AppConstats.GroupId);
+        String userId = SharedHelper.getKey(HelpChat.this, AppConstats.USERID);
+        AndroidNetworking.post(API_BaseUrl.BaseUrl + API_BaseUrl.helpgroups_chat)
+                .addBodyParameter("group_id",groupId)
+                .addBodyParameter("user_id",userId)
+                .addBodyParameter("message1",strMsg)
+                .setTag("Send help chat")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("HelpChat", "onResponse: " +response);
+
+
+                        try {
+                            if (response.getString("result").equals("true")){
+
+                                binding.etMsg.setText("");
+                                show_HelpChat();
+
+
+                            }
+                        } catch (JSONException e) {
+                            Log.e("HelpChat", "e: " +e.getMessage());
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                        Log.e("HelpChat", "onError: " +anError);
+
+                    }
+                });
+
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        show_HelpChat();
+
+        registerReceiver(mRegistrationBroadcastReceiver, new IntentFilter("FBR-IMAGE"));
+    }
+
+
+    @Override
+    protected void onPause() {
+
+        unregisterReceiver(mRegistrationBroadcastReceiver);
+
+        super.onPause();
+    }
+
 }

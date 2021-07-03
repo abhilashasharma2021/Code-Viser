@@ -25,6 +25,13 @@
     </style>
 
 
+    <style name="MyAlertDialogTheme" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/grey_light</item>
+        <item name="android:windowBackground">@color/grey_light</item>
+    </style>
+
+
     MainTextStyle
 
     <style name="MainTextStyle" parent="Widget.AppCompat.TextView">

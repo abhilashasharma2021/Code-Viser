@@ -30,6 +30,7 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.codeviser.Activity.HelpActivity;
 import com.codeviser.Activity.MainActivity;
+import com.codeviser.Activity.ScannerActivity;
 import com.codeviser.Activity.SettingActivity;
 import com.codeviser.Activity.SplashActivity;
 import com.codeviser.Adapter.HomeAdapter;
@@ -92,7 +93,11 @@ public class HomeFragment extends Fragment {
                     public boolean onMenuItemClick(MenuItem menuItem) {
 
                         if (menuItem.getItemId() == R.id.setting) {
-                           startActivity(new Intent(getActivity(), SettingActivity.class));
+                            startActivity(new Intent(getActivity(), SettingActivity.class));
+                        }
+
+                        else if (menuItem.getItemId()==R.id.web){
+                            startActivity(new Intent(getActivity(), ScannerActivity.class));
                         }
 
                         else if (menuItem.getItemId() == R.id.logout){
